@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navabar-container{
+   background-color: rgb(246, 248, 250);
+   font-family: 'Roboto', sans-serif;
+}
+
+.nav-logo{
+    width: 6em;
+    height: 2em;
+   
+}
+
+.nav-logo img{
+    width: 20em;
+    height: 15em;
+    margin-top: -4.7em;
+}
+
+.navabar-links{
+    height: 3em;
+    padding-top: -0.9em;
+    
+}
+
+.navabar-links ul li:hover{
+    color: rgb(165, 71, 4);
+    
+}
+
+
+.navabar-links ul{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+gap: 6em;
+margin-left: 14em;
+
+ 
+
+}
+
+.navabar-links ul li{
+
+    list-style-type: none;
+ 
+  
+}
+
+.navbar-links-links{
+    text-decoration: none;
+    color: black;
+    cursor:pointer;
+      
+}
