@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px;
+  margin-left: 200px; /* Offset for fixed navbar */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.footer-topLinks ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.footer-topLinks ul li {
+  font-size: 13px;
+}
+
+.footer-links-links {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+}
+
+.footer-links-links:hover {
+  color: #a54704;
+}
+
+.footer-p h5 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.footer-emailInput {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-emailInput input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 200px;
+  outline: none;
+}
+
+.footer-emailInput input::placeholder {
+  color: #ccc;
+}
+
+.footer-emailIcon {
+  color: #fff;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.footer-location {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+
+.footer-location h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer-location ul {
+  list-style: none;
+}
+
+.footer-location ul li {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.footer-copyrights {
+  margin-top: auto;
+  font-size: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    margin-left: 0; /* Remove offset on mobile if navbar becomes hamburger */
+    padding: 20px;
+  }
+
+  .footer-topLinks ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-location {
+    position: static;
+    margin-top: 20px;
+  }
+}
