@@ -10,11 +10,9 @@ import Drain from '../assets/Drain.jpg';
 import Pipe from '../assets/Pipe.jpg';
 import Compression from '../assets/Compression.jpg';
 import PipeInsulation from '../assets/PipeInsulation.jpg';
-import SumpPump from '../assets/SumpPump.jpg'
-import PipeThreader from '../assets/PipeThreader.jpg'
-import PressureGauge from '../assets/PressureGauge.jpg'
-
-
+import SumpPump from '../assets/SumpPump.jpg';
+import PipeThreader from '../assets/PipeThreader.jpg';
+import PressureGauge from '../assets/PressureGauge.jpg';
 
 const Home = () => {
   const plumbingEquipments = [
@@ -30,13 +28,14 @@ const Home = () => {
     { id: 10, name: 'Leak Detector', price: 45, image: plumbing1 },
     { id: 11, name: 'Compression Fittings', price: 10, image: Compression },
     { id: 12, name: 'Pipe Insulation Tape', price: 12, image: PipeInsulation },
-    { id: 13, name: 'Pressure Gauge', price: 30, image: PressureGauge }, // New product
-    { id: 14, name: 'Pipe Threader', price: 50, image: PipeThreader }, // New product
-    { id: 15, name: 'Sump Pump', price: 200, image: SumpPump }, // New product
+    { id: 13, name: 'Pressure Gauge', price: 30, image: PressureGauge },
+    { id: 14, name: 'Pipe Threader', price: 50, image: PipeThreader },
+    { id: 15, name: 'Sump Pump', price: 200, image: SumpPump },
   ];
 
   return (
-    <div className="container">
+    <div className="container-HOME">
+      <h1 className="page-title-HOME">Discover Our Plumbing Tools</h1>
       <div className="masonry-grid">
         {plumbingEquipments.map((equipment) => (
           <div key={equipment.id} className="masonry-item">
