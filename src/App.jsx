@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './components/Home'
 import Products from './components/Products';
 import Service from './components/Service';
+import BookingPage from './components/BookingPage';
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
    <Route path='/home' element={<Home/>} />
    <Route path='/products' element={<Products/>} />
    <Route path='/service' element={<Service/>} />
+   <Route path='/booking' element={<BookingPage/>} />
 
 
 

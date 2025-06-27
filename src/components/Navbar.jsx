@@ -17,15 +17,16 @@ function Navbar() {
           <Link to='/Products' className='navbar-links-links'>
             <li>Products</li>
           </Link>
-          <Link to='/#Service' className='navbar-links-links'>
+          <Link to='/Service' className='navbar-links-links'>
             <li>Services</li>
           </Link>
-          <Link to='/#HardwareMenu' className='navbar-links-links'>
+           <Link to='/Pick' className='navbar-links-links'>
+            <li>Pick Summary</li>
+          </Link>
+          <Link to='/booking' className='navbar-links-links'>
             <li>Booking</li>
           </Link>
-          <Link to='/#Contact' className='navbar-links-links'>
-            <li>Contact</li>
-          </Link>
+         
         </ul>
       </nav>
     </div>
