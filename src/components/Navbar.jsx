@@ -20,8 +20,8 @@ function Navbar() {
           <Link to='/Service' className='navbar-links-links'>
             <li>Services</li>
           </Link>
-           <Link to='/Pick' className='navbar-links-links'>
-            <li>Pick Summary</li>
+           <Link to='/Guide' className='navbar-links-links'>
+            <li>TroubShoot Guide</li>
           </Link>
           <Link to='/booking' className='navbar-links-links'>
             <li>Booking</li>

@@ -18,15 +18,24 @@
 
 .page-title {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   font-size: 2.5em;
   color: #333;
 }
 
+.services-note {
+  text-align: center;
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 2em;
+  font-style: italic;
+}
+
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for better 4-3 split */
   gap: 20px;
+  max-width: 1200px; /* Cap the grid width */
 }
 
 .service-card {

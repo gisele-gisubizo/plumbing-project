@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaWrench, FaTint, FaSink, FaHotTub, FaClock } from 'react-icons/fa'; // Plumbing-related icons
+import { FaWrench, FaTint, FaSink, FaHotTub, FaClock, FaExclamationTriangle } from 'react-icons/fa'; // Added FaExclamationTriangle for Sewer Line
 import '../styles/service.css';
 
 const Service = () => {
@@ -36,6 +36,12 @@ const Service = () => {
       description: 'Available 24/7, our emergency team responds to urgent issues like burst pipes, severe leaks, or no water supply. We prioritize rapid response to minimize damage, offering reliable solutions even during holidays or off-hours.',
       icon: <FaClock />,
     },
+    {
+      id: 6,
+      title: 'Sewer Line Repair and Replacement',
+      description: 'We offer expert repair and replacement of sewer lines to address blockages, cracks, or collapses. Using trenchless technology and thorough inspections, we restore functionality, prevent sewage backups, and ensure compliance with local regulations.',
+      icon: <FaExclamationTriangle />, // Icon for urgency and importance
+    },
   ];
 
   const handleChoose = (serviceId) => {
@@ -47,18 +53,21 @@ const Service = () => {
   return (
     <div className="services-container">
       <h1 className="page-title">Our Plumbing Services</h1>
+      <p className="services-note">We offer a comprehensive range of plumbing services to meet all your needs.</p>
       <div className="services-grid">
         {services.map((service) => (
           <div key={service.id} className="service-card">
             <div className="service-icon">{service.icon}</div>
             <h3 className="service-title">{service.title}</h3>
             <p className="service-description">{service.description}</p>
-            <button
-              className={`choose-button ${selectedServices.includes(service.id) ? 'selected' : ''}`}
-              onClick={() => handleChoose(service.id)}
-            >
-              {selectedServices.includes(service.id) ? 'Chosen' : 'Choose'}
-            </button>
+            <div className="button-container">
+              <button
+                className={`choose-button ${selectedServices.includes(service.id) ? 'selected' : ''}`}
+                onClick={() => handleChoose(service.id)}
+              >
+                {selectedServices.includes(service.id) ? 'Chosen' : 'Choose'}
+              </button>
+            </div>
           </div>
         ))}
       </div>

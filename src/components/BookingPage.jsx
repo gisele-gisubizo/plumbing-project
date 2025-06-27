@@ -118,16 +118,7 @@ const BookingPage = () => {
               className="form-input"
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Describe the Problem</label>
-            <textarea
-              name="description"
-              value={formData.description || defaultDescription}
-              onChange={handleChange}
-              placeholder="Please describe the plumbing issue in detail..."
-              className="form-input h-24"
-            ></textarea>
-          </div>
+          
           <button type="submit" className="book-service-btn">
             Book Service Now
           </button>

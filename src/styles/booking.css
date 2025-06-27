@@ -63,7 +63,7 @@
 }
 
 .book-service-btn {
-  background-color: #007bff;
+  background-color: #f59e0b;
   color: white;
   padding: 10px;
   border: none;
@@ -74,7 +74,7 @@
 }
 
 .book-service-btn:hover {
-  background-color: #0056b3;
+  background-color: #e08e0b;
 }
 
 @media (min-width: 768px) {
