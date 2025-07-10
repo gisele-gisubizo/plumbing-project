@@ -28,12 +28,12 @@
 }
 
 .nav-link.active {
-  background-color: #4a90e2; /* Blue accent for active link */
+  background-color: #f59e0b; /* Matches website's orange accent */
   color: white;
 }
 
 .nav-link:hover {
-  background-color: #e0e0e0;
+  background-color: #f0e0b8; /* Lighter shade of orange for hover */
 }
 
 .dashboard-content {

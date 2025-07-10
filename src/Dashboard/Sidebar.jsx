@@ -9,11 +9,23 @@ const Sidebar = () => {
         <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           Overview
         </NavLink>
-        <NavLink to="/dashboard/orders" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-          Orders
+        <NavLink to="/dashboard/services" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Services
         </NavLink>
-        <NavLink to="/dashboard/profile" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-          Profile
+        <NavLink to="/dashboard/products" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Products
+        </NavLink>
+        <NavLink to="/dashboard/appointments" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Appointments
+        </NavLink>
+        <NavLink to="/dashboard/settings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Settings
+        </NavLink>
+        <NavLink to="/dashboard/inventory" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Inventory
+        </NavLink>
+        <NavLink to="/dashboard/reports" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+          Reports
         </NavLink>
       </nav>
     </aside>

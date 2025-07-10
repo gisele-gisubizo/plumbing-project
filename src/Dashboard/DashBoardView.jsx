@@ -1,17 +1,13 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar'; // Assuming a Sidebar component
 import '../styles/dashboard.css';
 
-const DashBoardLayout = () => {
+const DashBoardView = () => {
   return (
-    <div className="dashboard-container">
-      <Sidebar />
-      <main className="dashboard-content">
-        <Outlet />
-      </main>
+    <div className="dashboard-section">
+      <h2>Dashboard Overview</h2>
+      <p>Manage your plumbing business with real-time insights into services, products, appointments, and more.</p>
     </div>
   );
 };
 
-export default DashBoardLayout;
+export default DashBoardView;

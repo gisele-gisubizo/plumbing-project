@@ -6,10 +6,14 @@ import Products from './components/Products';
 import Service from './components/Service';
 import BookingPage from './components/BookingPage';
 import Guide from './components/Guide';
-import DashBoardLayout from './Dashboard/DashBoardLayout'; // New dashboard layout
-import DashBoardView from './DashBoard/DashBoardView'; // Default dashboard view
-import Orders from './DashBoard/Orders'; // Orders section
-import Profile from './DashBoard/Profile'; // Profile section
+import DashBoardLayout from './Dashboard/DashBoardLayout';
+import DashBoardView from './Dashboard/DashBoardView';
+import Services from './DashBoard/Services'; // New services section
+import ProductsDashboard from './DashBoard/Products'; // New products section
+import Appointments from './DashBoard/Appointments'; // New appointments section
+import Settings from './DashBoard/Settings'; // New settings section
+import Inventory from './DashBoard/Inventory'; // New inventory section
+import Reports from './DashBoard/Reports'; // New reports section
 import './App.css';
 
 function App() {
@@ -32,8 +36,12 @@ function App() {
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashBoardLayout />}>
             <Route index element={<DashBoardView />} /> {/* Default dashboard view */}
-            <Route path="orders" element={<Orders />} /> {/* Orders section */}
-            <Route path="profile" element={<Profile />} /> {/* Profile section */}
+            <Route path="services" element={<Services />} /> {/* Services management */}
+            <Route path="products" element={<ProductsDashboard />} /> {/* Products management */}
+            <Route path="appointments" element={<Appointments />} /> {/* Appointments management */}
+            <Route path="settings" element={<Settings />} /> {/* Settings */}
+            <Route path="inventory" element={<Inventory />} /> {/* Inventory tracking */}
+            <Route path="reports" element={<Reports />} /> {/* Reports and analytics */}
           </Route>
         </Routes>
       </BrowserRouter>
