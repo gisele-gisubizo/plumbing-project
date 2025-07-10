@@ -1,0 +1,107 @@
+.reschedule-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.reschedule-modal {
+  background-color: var(--section-bg, #ffffff);
+  padding: 25px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.reschedule-modal h2 {
+  color: var(--text-color, #333);
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.reschedule-modal p {
+  color: var(--text-secondary, #666);
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.time-select {
+  padding: 10px;
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: var(--input-bg, #fff);
+  color: var(--text-color, #333);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.time-select:focus {
+  border-color: var(--accent-color, #f59e0b);
+  outline: none;
+}
+
+.reschedule-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-btn {
+  background-color: var(--accent-color, #f59e0b);
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: var(--accent-hover, #e08e0b);
+  transform: translateY(-2px);
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+body.light {
+  --section-bg: #ffffff;
+  --text-color: #333;
+  --text-secondary: #666;
+  --border-color: #ddd;
+  --input-bg: #fff;
+  --accent-color: #f59e0b;
+  --accent-hover: #e08e0b;
+}
+
+body.dark {
+  --section-bg: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #555;
+  --input-bg: #3d3d3d;
+  --accent-color: #b86f09;
+  --accent-hover: #a05a07;
+}

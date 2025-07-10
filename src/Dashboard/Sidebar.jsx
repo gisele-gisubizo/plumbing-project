@@ -21,14 +21,14 @@ const Sidebar = ({ toggleTheme }) => {
         <NavLink to="/dashboard/appointments" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           Appointments
         </NavLink>
-        <NavLink to="/dashboard/settings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-          Settings
-        </NavLink>
         <NavLink to="/dashboard/inventory" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           Inventory
         </NavLink>
         <NavLink to="/dashboard/reports" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-          Reports
+      Reports
+        </NavLink>
+        <NavLink to="/dashboard/settings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+             Settings
         </NavLink>
        
       </nav>

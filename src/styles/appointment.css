@@ -1,0 +1,140 @@
+.appointments-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color, #f9f9f9);
+  color: var(--text-color, #333);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--text-color, #333);
+  font-weight: 700;
+}
+
+.appointments-note {
+  color: var(--text-secondary, #666);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.appointments-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.filter-select,
+.search-input {
+  padding: 10px;
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--input-bg, #fff);
+  color: var(--text-color, #333);
+  transition: border-color 0.3s ease;
+}
+
+.filter-select:focus,
+.search-input:focus {
+  border-color: var(--accent-color, #f59e0b);
+  outline: none;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 300px;
+}
+
+.appointments-table {
+  background-color: var(--section-bg, #ffffff);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.appointments-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+}
+
+.appointments-table th {
+  background-color: var(--section-bg, #f9f9f9);
+  color: var(--text-color, #333);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.appointments-table td {
+  color: var(--text-secondary, #666);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn.reschedule {
+  background-color: var(--accent-color, #f59e0b);
+  color: white;
+}
+
+.action-btn.cancel {
+  background-color: #dc3545;
+  color: white;
+}
+
+.action-btn.view {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.action-btn svg {
+  font-size: 1rem;
+}
+
+body.light {
+  --bg-color: #f9f9f9;
+  --section-bg: #ffffff;
+  --text-color: #333;
+  --text-secondary: #666;
+  --border-color: #ddd;
+  --input-bg: #fff;
+  --accent-color: #f59e0b;
+  --accent-hover: #e08e0b;
+}
+
+body.dark {
+  --bg-color: #1a1a1a;
+  --section-bg: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #555;
+  --input-bg: #3d3d3d;
+  --accent-color: #b86f09; /* Darker orange */
+  --accent-hover: #a05a07; /* Even darker on hover */
+}

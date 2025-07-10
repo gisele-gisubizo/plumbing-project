@@ -37,7 +37,7 @@ body.dark .nav-link {
 
 body.light .nav-link.active,
 body.dark .nav-link.active {
-  background-color: #f59e0b;
+  background-color: var(--accent-color, #f59e0b);
   color: white;
 }
 
@@ -49,7 +49,7 @@ body.dark .nav-link:hover {
 body.light .theme-toggle-btn,
 body.dark .theme-toggle-btn {
   padding: 10px;
-  background-color: #f59e0b;
+  background-color: var(--accent-color, #f59e0b);
   color: white;
   border: none;
   border-radius: 4px;
@@ -59,7 +59,7 @@ body.dark .theme-toggle-btn {
 
 body.light .theme-toggle-btn:hover,
 body.dark .theme-toggle-btn:hover {
-  background-color: #e08e0b;
+  background-color: var(--accent-hover, #e08e0b);
 }
 
 body.light .dashboard-content,
@@ -97,6 +97,8 @@ body.light {
   --text-secondary: #666;
   --border-color: #ddd;
   --hover-bg: #f0e0b8;
+  --accent-color: #f59e0b;
+  --accent-hover: #e08e0b;
 }
 
 body.dark {
@@ -107,4 +109,6 @@ body.dark {
   --text-secondary: #a0a0a0;
   --border-color: #555;
   --hover-bg: #404040;
+  --accent-color: #b86f09; /* Darker orange for dark mode */
+  --accent-hover: #a05a07; /* Even darker on hover */
 }

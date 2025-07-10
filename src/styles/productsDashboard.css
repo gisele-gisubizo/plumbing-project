@@ -71,7 +71,7 @@
 }
 
 .action-btn:not(.delete) {
-  background-color: #f59e0b;
+  background-color: var(--accent-color, #f59e0b);
   color: white;
 }
 
@@ -88,7 +88,7 @@
 
 .pagination-btn {
   padding: 5px 10px;
-  background-color: #f59e0b;
+  background-color: var(--accent-color, #f59e0b);
   color: white;
   border: none;
   border-radius: 4px;
@@ -101,7 +101,7 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #e08e0b;
+  background-color: var(--accent-hover, #e08e0b);
 }
 
 .add-product-section {
@@ -133,7 +133,7 @@
 
 .add-product-btn {
   padding: 10px;
-  background-color: #f59e0b;
+  background-color: var(--accent-color, #f59e0b);
   color: white;
   border: none;
   border-radius: 4px;
@@ -143,7 +143,7 @@
 }
 
 .add-product-btn:hover {
-  background-color: #e08e0b;
+  background-color: var(--accent-hover, #e08e0b);
 }
 
 body.dark .form-input,
@@ -153,4 +153,28 @@ body.dark .form-select {
 
 body.dark .products-table th {
   background-color: var(--section-bg, #2d2d2d);
+}
+
+body.light {
+  --bg-color: #f9f9f9;
+  --section-bg: #ffffff;
+  --text-color: #333;
+  --text-secondary: #666;
+  --border-color: #ddd;
+  --input-bg: #fff;
+  --hover-bg: #f0e0b8;
+  --accent-color: #f59e0b;
+  --accent-hover: #e08e0b;
+}
+
+body.dark {
+  --bg-color: #1a1a1a;
+  --section-bg: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #555;
+  --input-bg: #3d3d3d;
+  --hover-bg: #404040;
+  --accent-color: #b86f09; /* Darker orange */
+  --accent-hover: #a05a07; /* Even darker on hover */
 }
