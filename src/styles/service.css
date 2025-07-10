@@ -1,120 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .services-container {
-  font-family: 'Roboto', sans-serif;
-  max-width: 1200px;
-  margin-left: 20%; /* Offset for 20% sidebar */
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 .page-title {
-  text-align: center;
-  margin-bottom: 1em;
-  font-size: 2.5em;
   color: #333;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 .services-note {
-  text-align: center;
   color: #666;
-  font-size: 1.1em;
-  margin-bottom: 2em;
-  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.filter-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for better 4-3 split */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 1200px; /* Cap the grid width */
+  margin-bottom: 20px;
 }
 
 .service-card {
-  background-color: #f9f9f9;
-  padding: 20px;
+  background-color: white;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Ensure all cards are the same height */
+  text-align: center;
 }
 
 .service-icon {
-  font-size: 2em;
-  text-align: center;
-  margin-bottom: 1em;
+  font-size: 2rem;
   color: #f59e0b;
+  margin-bottom: 10px;
 }
 
 .service-title {
-  font-size: 1.5em;
   color: #333;
-  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
 .service-description {
-  font-size: 1em;
   color: #666;
-  line-height: 1.5;
-  margin-bottom: auto; /* Push the button to the bottom */
+  font-size: 0.9rem;
 }
 
-.button-container {
-  margin-top: auto; /* Push the button to the bottom of the card */
+.add-service-section {
+  margin-top: 20px;
 }
 
-.choose-button {
-  padding: 10px 20px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #fff;
+.add-service-title {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.add-service-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.form-input,
+.form-select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.add-service-btn {
+  padding: 10px;
   background-color: #f59e0b;
+  color: white;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-}
-
-.choose-button:hover {
-  background-color: #e08e0b;
-}
-
-.choose-button.selected {
-  background-color: #28a745; /* Green for chosen state */
-  cursor: default;
-}
-
-.choose-button.selected:hover {
-  background-color: #218838;
-}
-/* Existing styles remain, add this at the end */
-.proceed-button-container {
-  text-align: center;
-  margin-top: 2em; /* Space above the button */
-}
-
-.cta-button {
-  padding: 10px 20px;
-  font-size: 1em;
-  font-weight: bold;
-  color: #fff;
-  background-color: #f59e0b;
-  border: none;
-  border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.cta-button:hover {
+.add-service-btn:hover {
   background-color: #e08e0b;
 }

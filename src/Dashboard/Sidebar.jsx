@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTheme } from './ThemeContext';
 import '../styles/dashboard.css';
 
-const Sidebar = () => {
+const Sidebar = ({ toggleTheme }) => {
+  const { theme } = useTheme();
+
   return (
     <aside className="dashboard-sidebar">
       <nav className="dashboard-nav">
@@ -27,6 +30,7 @@ const Sidebar = () => {
         <NavLink to="/dashboard/reports" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
           Reports
         </NavLink>
+       
       </nav>
     </aside>
   );
