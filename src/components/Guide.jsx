@@ -1,38 +1,50 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/guide.css';
 
 const TroubleshootingGuide = () => {
   const [answers, setAnswers] = useState({
-    hasLeak: false,
-    hasClog: false,
-    noHotWater: false,
-    emergency: false,
-    otherIssue: '',
+    issueDetails: '', // Start empty for user input
+    severity: 'low', // Options: low, medium, high
+    location: '',
   });
   const navigate = useNavigate();
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const selectedServices = query.get('services') ? query.get('services').split(',').map(Number) : [];
+
+  const serviceMap = {
+    1: 'Pipe Installation and Replacement',
+    2: 'Leak Detection and Repair',
+    3: 'Drain Cleaning and Unclogging',
+    4: 'Water Heater Services',
+    5: 'Emergency Plumbing Services',
+    6: 'Sewer Line Repair and Replacement',
+  };
+
+  useEffect(() => {
+    // No pre-filling of issueDetails; just ensure state is initialized
+  }, [selectedServices]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setAnswers((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }));
   };
 
-  const getSuggestedServices = () => {
-    const suggestions = [];
-    if (answers.hasLeak) suggestions.push('Leak Detection and Repair');
-    if (answers.hasClog) suggestions.push('Drain Cleaning and Unclogging');
-    if (answers.noHotWater) suggestions.push('Water Heater Services');
-    if (answers.emergency) suggestions.push('Emergency Plumbing Services');
-    if (answers.otherIssue) suggestions.push('Please describe for custom assistance');
-    return suggestions.length > 0 ? suggestions.join(', ') : 'No specific issues identified. Consider a general check-up.';
-  };
-
   const handleNext = () => {
-    const suggestion = getSuggestedServices();
-    navigate('/booking?description=' + encodeURIComponent(suggestion));
+    const { issueDetails, severity, location } = answers;
+    if (issueDetails && severity && location) {
+      const params = new URLSearchParams({
+        services: selectedServices.join(','),
+        description: encodeURIComponent(`${issueDetails} - Severity: ${severity}, Location: ${location}`),
+      }).toString();
+      navigate(`/booking?${params}`);
+    } else {
+      alert('Please fill in all fields before proceeding.');
+    }
   };
 
   return (
@@ -41,81 +53,51 @@ const TroubleshootingGuide = () => {
         <header className="troubleshooting-header text-center mb-6">
           <h1 className="troubleshooting-title text-2xl font-bold">Plumbing Troubleshooting Guide</h1>
           <p className="troubleshooting-subtitle text-sm text-gray-600">
-            Not sure what you need? Let’s identify your plumbing issue!
+            Provide details about your selected service to assist us better!
           </p>
         </header>
 
         <form className="troubleshooting-form space-y-4">
           <div className="form-group">
-            <label className="form-label">
-              <input
-                type="checkbox"
-                name="hasLeak"
-                checked={answers.hasLeak}
-                onChange={handleChange}
-                className="form-checkbox"
-              />
-              I have a leak (e.g., dripping faucet, wet walls)
-            </label>
+            <label className="form-label">Selected Service(s)</label>
+            <p className="form-input bg-gray-100 p-2 rounded">
+              {selectedServices.map((id) => serviceMap[id]).join(', ') || 'No service selected'}
+            </p>
           </div>
           <div className="form-group">
-            <label className="form-label">
-              <input
-                type="checkbox"
-                name="hasClog"
-                checked={answers.hasClog}
-                onChange={handleChange}
-                className="form-checkbox"
-              />
-              I have a clog or slow drain
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">
-              <input
-                type="checkbox"
-                name="noHotWater"
-                checked={answers.noHotWater}
-                onChange={handleChange}
-                className="form-checkbox"
-              />
-              I have no hot water or heater issues
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">
-              <input
-                type="checkbox"
-                name="emergency"
-                checked={answers.emergency}
-                onChange={handleChange}
-                className="form-checkbox"
-              />
-              This is an emergency (e.g., burst pipe, no water)
-            </label>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Other Issue (describe if applicable)</label>
+            <label className="form-label">Describe Your Issue</label>
             <input
               type="text"
-              name="otherIssue"
-              value={answers.otherIssue}
+              name="issueDetails"
+              value={answers.issueDetails}
               onChange={handleChange}
-              placeholder="e.g., sewer backup, low pressure"
+              placeholder="e.g., leak in kitchen sink, noisy water heater"
               className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Severity</label>
+            <select name="severity" value={answers.severity} onChange={handleChange} className="form-input">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label className="form-label">Location of Issue</label>
+            <input
+              type="text"
+              name="location"
+              value={answers.location}
+              onChange={handleChange}
+              placeholder="e.g., bathroom, basement"
+              className="form-input"
+              required
             />
           </div>
 
-          <div className="suggestion-section">
-            <h2 className="suggestion-title text-lg font-semibold mb-2">Suggested Services</h2>
-            <p className="suggestion-text text-gray-700">{getSuggestedServices()}</p>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleNext}
-            className="troubleshooting-btn"
-          >
+          <button type="button" onClick={handleNext} className="troubleshooting-btn">
             Proceed to Booking
           </button>
         </form>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { FaWrench, FaTint, FaSink, FaHotTub, FaClock, FaExclamationTriangle } from 'react-icons/fa'; // Added FaExclamationTriangle for Sewer Line
+import { FaWrench, FaTint, FaSink, FaHotTub, FaClock, FaExclamationTriangle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import '../styles/service.css';
 
 const Service = () => {
   const [selectedServices, setSelectedServices] = useState([]);
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -40,7 +42,7 @@ const Service = () => {
       id: 6,
       title: 'Sewer Line Repair and Replacement',
       description: 'We offer expert repair and replacement of sewer lines to address blockages, cracks, or collapses. Using trenchless technology and thorough inspections, we restore functionality, prevent sewage backups, and ensure compliance with local regulations.',
-      icon: <FaExclamationTriangle />, // Icon for urgency and importance
+      icon: <FaExclamationTriangle />,
     },
   ];
 
@@ -48,6 +50,18 @@ const Service = () => {
     setSelectedServices((prev) =>
       prev.includes(serviceId) ? prev.filter((id) => id !== serviceId) : [...prev, serviceId]
     );
+  };
+
+  const handleProceed = () => {
+    if (selectedServices.length > 0) {
+      const serviceTitles = selectedServices
+        .map((id) =>
+          services.find((service) => service.id === id)?.title
+        )
+        .filter(Boolean)
+        .join(', ');
+      navigate(`/guide?services=${encodeURIComponent(selectedServices.join(','))}`);
+    }
   };
 
   return (
@@ -71,6 +85,13 @@ const Service = () => {
           </div>
         ))}
       </div>
+      {selectedServices.length > 0 && (
+        <div className="proceed-button-container text-center mt-6">
+          <button className="cta-button" onClick={handleProceed}>
+            Proceed to Troubleshooting Guide
+          </button>
+        </div>
+      )}
     </div>
   );
 };

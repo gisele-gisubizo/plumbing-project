@@ -97,3 +97,24 @@
 .choose-button.selected:hover {
   background-color: #218838;
 }
+/* Existing styles remain, add this at the end */
+.proceed-button-container {
+  text-align: center;
+  margin-top: 2em; /* Space above the button */
+}
+
+.cta-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f59e0b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e08e0b;
+}

@@ -3,19 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/booking.css';
 
 const BookingPage = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    location: '',
-    description: '',
-  });
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
-  const services = query.get('services')?.split(',').map(Number) || [];
-  const product = query.get('product') || '';
+  const selectedServices = query.get('services')?.split(',').map(Number) || [];
 
   const serviceMap = {
     1: 'Pipe Installation and Replacement',
@@ -23,32 +14,45 @@ const BookingPage = () => {
     3: 'Drain Cleaning and Unclogging',
     4: 'Water Heater Services',
     5: 'Emergency Plumbing Services',
+    6: 'Sewer Line Repair and Replacement',
   };
 
-  const defaultDescription = services
-    .map((id) => serviceMap[id])
-    .concat(product ? [product] : [])
-    .filter(Boolean)
-    .join(', ');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    location: '',
+  });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Booking submitted! We will reach you as soon as possible.');
-    navigate('/home');
+    try {
+      const bookingDetails = {
+        ...formData,
+        services: selectedServices.map((id) => serviceMap[id]).join(', '),
+      };
+      console.log('Form submitted:', bookingDetails);
+      alert('Booking submitted! We will reach you as soon as possible.');
+      navigate('/home');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit booking. Please try again.');
+    }
   };
 
   return (
-    <div className="booking-container ml-64">
+    <div className="booking-container">
       <div className="booking-content max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
         <header className="booking-header text-center mb-6">
           <h1 className="booking-title text-2xl font-bold">Plumbing Booking Form</h1>
           <p className="booking-subtitle text-sm text-gray-600">
-            Company Address | Company Email | Company Website | Company Number
+            123 Kigali, Remera, Kg 11 | KigaliPlumbers123@gmail.com | 07986338653
           </p>
           <p className="booking-instruction text-gray-700 mt-2">
             Please fill out the form below to schedule your plumbing service.
@@ -118,7 +122,12 @@ const BookingPage = () => {
               className="form-input"
             />
           </div>
-          
+          <div className="form-group">
+            <label className="form-label">Selected Service(s)</label>
+            <p className="form-input bg-gray-100 p-2 rounded">
+              {selectedServices.map((id) => serviceMap[id]).join(', ') || 'No service selected'}
+            </p>
+          </div>
           <button type="submit" className="book-service-btn">
             Book Service Now
           </button>
