@@ -1,0 +1,154 @@
+.reports-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color, #f9f9f9);
+  color: var(--text-color, #333);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-color, #333);
+  font-weight: 700;
+}
+
+.reports-note {
+  color: var(--text-secondary, #666);
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.reports-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.filter-date,
+.filter-status {
+  padding: 8px;
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: var(--input-bg, #fff);
+  color: var(--text-color, #333);
+  transition: border-color 0.3s ease;
+}
+
+.filter-date:focus,
+.filter-status:focus {
+  border-color: var(--accent-color, #f59e0b);
+  outline: none;
+}
+
+.reports-summary {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--section-bg, #f9f9f9);
+  border-radius: 6px;
+}
+
+.reports-summary h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--text-color, #333);
+}
+
+.reports-summary p {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #666);
+}
+
+.reports-table {
+  background-color: var(--section-bg, #ffffff);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.reports-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reports-table th,
+.reports-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color, #ddd);
+}
+
+.reports-table th {
+  background-color: var(--section-bg, #f9f9f9);
+  color: var(--text-color, #333);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reports-table td {
+  color: var(--text-secondary, #666);
+  font-size: 0.9rem;
+}
+
+.date-time-cell {
+  white-space: nowrap;
+}
+
+.date-time-cell span {
+  margin-right: 10px;
+}
+
+.date-time-cell span:last-child {
+  margin-right: 0;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: var(--accent-color, #f59e0b);
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: var(--accent-hover, #e08e0b);
+  transform: translateY(-1px);
+}
+
+.download-btn svg {
+  font-size: 1rem;
+}
+
+body.light {
+  --bg-color: #f9f9f9;
+  --section-bg: #ffffff;
+  --text-color: #333;
+  --text-secondary: #666;
+  --border-color: #ddd;
+  --input-bg: #fff;
+  --accent-color: #f59e0b;
+  --accent-hover: #e08e0b;
+}
+
+body.dark {
+  --bg-color: #1a1a1a;
+  --section-bg: #2d2d2d;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #555;
+  --input-bg: #3d3d3d;
+  --accent-color: #b86f09;
+  --accent-hover: #a05a07;
+}
