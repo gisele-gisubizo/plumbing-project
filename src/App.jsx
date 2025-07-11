@@ -13,6 +13,8 @@ import ProductsDashboard from './DashBoard/Products';
 import Appointments from './DashBoard/Appointments';
 import Settings from './DashBoard/Settings';
 import Inventory from './Dashboard/Inventory';
+import LoginPage from './Dashboard/LoginPage';
+import RegisterPage from './Dashboard/RegisterPage';
 import Reports from './Dashboard/Reports';
 import { ThemeProvider } from './Dashboard/ThemeContext';
 import './App.css';
@@ -41,6 +43,8 @@ function App() {
             }
           >
             <Route index element={<DashBoardView />} />
+            <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
             <Route path="services" element={<Services />} />
             <Route path="products" element={<ProductsDashboard />} />
             <Route path="appointments" element={<Appointments />} />
