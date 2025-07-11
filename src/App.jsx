@@ -8,12 +8,12 @@ import BookingPage from './components/BookingPage';
 import Guide from './components/Guide';
 import DashBoardLayout from './Dashboard/DashBoardLayout';
 import DashBoardView from './Dashboard/DashBoardView';
-import Services from './DashBoard/Services';
+import Services from './Dashboard/Services';
 import ProductsDashboard from './DashBoard/Products';
 import Appointments from './DashBoard/Appointments';
 import Settings from './DashBoard/Settings';
-import Inventory from './DashBoard/Inventory';
-import Reports from './DashBoard/Reports';
+import Inventory from './Dashboard/Inventory';
+import Reports from './Dashboard/Reports';
 import { ThemeProvider } from './Dashboard/ThemeContext';
 import './App.css';
 

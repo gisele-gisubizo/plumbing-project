@@ -44,7 +44,7 @@ const Inventory = () => {
   return (
     <div className="inventory-container">
       <h1 className="page-title">Inventory Management</h1>
-      <p className="inventory-note">Track supplies as of 11:13 AM CAT, Friday, July 11, 2025.</p>
+      <p className="inventory-note">Track supplies as of 11:18 AM CAT, Friday, July 11, 2025.</p>
 
       <div className="inventory-filters">
         <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)} className="filter-category">
@@ -74,14 +74,15 @@ const Inventory = () => {
           <div className="add-form">
             <h2>Add New Item</h2>
             <form onSubmit={handleAddItem}>
+              <label>Item Name</label>
               <input
                 type="text"
                 value={newItem.name}
                 onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                placeholder="Item Name"
                 required
                 className="form-input"
               />
+              <label>Category</label>
               <select
                 value={newItem.category}
                 onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
@@ -92,36 +93,36 @@ const Inventory = () => {
                 <option value="Sealing">Sealing</option>
                 <option value="Fittings">Fittings</option>
               </select>
+              <label>Stock Level</label>
               <input
                 type="number"
                 value={newItem.stock}
                 onChange={(e) => setNewItem({ ...newItem, stock: parseInt(e.target.value) || 0 })}
-                placeholder="Stock Level"
                 required
                 className="form-input"
               />
+              <label>Reorder Threshold</label>
               <input
                 type="number"
                 value={newItem.threshold}
                 onChange={(e) => setNewItem({ ...newItem, threshold: parseInt(e.target.value) || 0 })}
-                placeholder="Reorder Threshold"
                 required
                 className="form-input"
               />
+              <label>Supplier</label>
               <input
                 type="text"
                 value={newItem.supplier}
                 onChange={(e) => setNewItem({ ...newItem, supplier: e.target.value })}
-                placeholder="Supplier"
                 required
                 className="form-input"
               />
+              <label>Price ($)</label>
               <input
                 type="number"
                 step="0.01"
                 value={newItem.price}
                 onChange={(e) => setNewItem({ ...newItem, price: parseFloat(e.target.value) || 0 })}
-                placeholder="Price ($)"
                 required
                 className="form-input"
               />

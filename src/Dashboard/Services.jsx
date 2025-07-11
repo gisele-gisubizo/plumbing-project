@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaWrench, FaTint, FaSink, FaHotTub, FaClock, FaExclamationTriangle } from 'react-icons/fa';
+import { FaWrench, FaTint, FaSink, FaHotTub, FaClock, FaExclamationTriangle, FaEdit, FaTrash } from 'react-icons/fa';
 import '../styles/service.css';
 
 const Service = () => {
@@ -69,6 +69,7 @@ const Service = () => {
     cost: '',
     duration: '',
   });
+  const [editService, setEditService] = useState(null);
 
   const categories = ['Repair', 'Installation', 'Maintenance', 'Emergency'];
   const statuses = ['active', 'inactive'];
@@ -82,6 +83,11 @@ const Service = () => {
   const handleNewServiceChange = (e) => {
     const { name, value } = e.target;
     setNewService((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleEditServiceChange = (e) => {
+    const { name, value } = e.target;
+    setEditService((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleAddService = (e) => {
@@ -99,6 +105,20 @@ const Service = () => {
     }
   };
 
+  const handleUpdateService = (e) => {
+    e.preventDefault();
+    if (editService.title && editService.cost && editService.duration) {
+      setServices(services.map((service) =>
+        service.id === editService.id ? { ...editService, icon: service.icon } : service
+      ));
+      setEditService(null);
+    }
+  };
+
+  const handleDeleteService = (id) => {
+    setServices(services.filter((service) => service.id !== id));
+  };
+
   const filteredServices = services.filter((service) => {
     return (
       (filterCategory === '' || service.category === filterCategory) &&
@@ -109,7 +129,7 @@ const Service = () => {
   return (
     <div className="services-container">
       <h1 className="page-title">Service Management</h1>
-      <p className="services-note">Manage plumbing services, bookings, and status as of 06:17 PM CAT, July 10, 2025.</p>
+      <p className="services-note">Manage plumbing services, bookings, and status as of 11:23 AM CAT, Friday, July 11, 2025.</p>
 
       {/* Filter Section */}
       <div className="filter-section">
@@ -140,7 +160,14 @@ const Service = () => {
             <p className="service-description">
               Category: {service.category} | Status: {service.status} | Cost: {service.cost} | Duration: {service.duration}
             </p>
-            {/* Add edit/delete functionality later */}
+            <div className="service-actions">
+              <button className="action-btn edit" onClick={() => setEditService({ ...service })}>
+                <FaEdit /> Edit
+              </button>
+              <button className="action-btn delete" onClick={() => handleDeleteService(service.id)}>
+                <FaTrash /> Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -205,6 +232,73 @@ const Service = () => {
           </button>
         </form>
       </div>
+
+      {/* Edit Service Modal */}
+      {editService && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Edit Service</h2>
+            <form onSubmit={handleUpdateService}>
+              <input
+                type="text"
+                name="title"
+                value={editService.title}
+                onChange={handleEditServiceChange}
+                className="form-input"
+                required
+              />
+              <select
+                name="category"
+                value={editService.category}
+                onChange={handleEditServiceChange}
+                className="form-select"
+              >
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="status"
+                value={editService.status}
+                onChange={handleEditServiceChange}
+                className="form-select"
+              >
+                {statuses.map((status) => (
+                  <option key={status} value={status}>
+                    {status.charAt(0).toUpperCase() + status.slice(1)}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                name="cost"
+                value={editService.cost}
+                onChange={handleEditServiceChange}
+                className="form-input"
+                required
+              />
+              <input
+                type="text"
+                name="duration"
+                value={editService.duration}
+                onChange={handleEditServiceChange}
+                className="form-input"
+                required
+              />
+              <div className="modal-actions">
+                <button type="submit" className="save-btn">
+                  Save
+                </button>
+                <button type="button" className="cancel-btn" onClick={() => setEditService(null)}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
