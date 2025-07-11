@@ -34,6 +34,8 @@ function App() {
             <Route path="/booking" element={<BookingPage />} />
             <Route path="/guide" element={<Guide />} />
           </Route>
+
+           
           <Route
             path="/dashboard"
             element={
@@ -43,7 +45,7 @@ function App() {
             }
           >
             <Route index element={<DashBoardView />} />
-            <Route path="login" element={<LoginPage />} />
+           <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
             <Route path="services" element={<Services />} />
             <Route path="products" element={<ProductsDashboard />} />
