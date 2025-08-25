@@ -1,137 +1,80 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // For navigation to products/services
-import '../styles/home.css';
-import PipeWrench from '../assets/PipeWrench.jpg';
-import Plunger from '../assets/Plunger.jpg';
-import WaterPump from '../assets/WaterPump.jpg';
-import PressureGauge from '../assets/PressureGauge.jpg';
-import PVC from '../assets/PVC.jpg'; // Added for more items
-import Drain from '../assets/Drain.jpg'; // Added for more items
+import React, { useEffect } from "react";
+import "../styles/home.css";
+import plumbingBg from "../assets/PVC.jpg"; // replace with your image path
+import PlungerBg from "../assets/Plunger.jpg"; // Not used anymore
 
 const Home = () => {
-  const featuredItems = [
-    { id: 1, name: 'Pipe Wrench', price: 25000, image: PipeWrench },
-    { id: 2, name: 'Plunger', price: 1500, image: Plunger },
-    { id: 3, name: 'Water Pump', price: 15000, image: WaterPump },
-    { id: 4, name: 'Pressure Gauge', price: 3000, image: PressureGauge },
-    { id: 5, name: 'PVC Pipe Cutter', price: 3000, image: PVC }, // New item
-    { id: 6, name: 'Drain Snake', price: 35500, image: Drain }, // New item
-  ];
+  // Auto scroll after 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const nextSection = document.getElementById("services");
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 10000); // 10 seconds
 
-  const services = [
-    {
-      id: 1,
-      title: 'Plumbing Installation',
-      description: 'Expert setup of pipes and fixtures with high-quality materials.',
-    },
-    {
-      id: 2,
-      title: 'Leak Repair',
-      description: 'Quick fixes for leaks and damages using advanced detection tools.',
-    },
-    {
-      id: 3,
-      title: 'Maintenance',
-      description: 'Regular checks for efficiency and preventive care.',
-    },
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'John Doe',
-      text: 'Plumbing Pros fixed my leak in no time! Highly recommend their services.',
-      location: 'Kigali, Remera',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      text: 'Great team, affordable prices, and 24/7 support. Amazing experience!',
-      location: 'Kigali, Kimihurura',
-    },
-  ];
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="home-container">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <h1 className="hero-title">Welcome to Plumbing Pros</h1>
-        <p className="hero-subtitle">Your trusted source for plumbing tools and professional services in Kigali.</p>
-        <button className="cta-button" onClick={() => window.location.href = '/products'}>
-          Explore Our Solutions
-        </button>
-      </section>
+    <>
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="logo">PlumbFix</div>
+        <ul className="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
 
-      {/* Featured Items Section */}
-      <section className="featured-items">
-        <h2 className="section-title">Featured Tools</h2>
-        <div className="content-area">
-          <div className="masonry-grid">
-            {featuredItems.map((item) => (
-              <div key={item.id} className="masonry-item">
-                <div className="product-card">
-                  <div className="image-container">
-                    <img src={item.image} alt={item.name} className="product-image" />
-                    <div className="overlay">
-                      <Link to={`/hardware/${item.id}`} className="overlay-text">
-                        View Details
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="product-info">
-                    <span className="price-tag">FRW {item.price.toLocaleString()}</span>
-                    <h3 className="product-name">{item.name}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
+      {/* Hero Section */}
+      <div
+        id="home"
+        className="hero"
+        style={{ backgroundImage: `url(${plumbingBg})` }}
+      >
+        <div className="overlay"></div>
+        <div className="hero-content">
+          <h1>Fast Plumbing Repair — When You Need It Most.</h1>
+          <p>Same-day service. Certified plumbers. 100% satisfaction guarantee.</p>
+          <div className="buttons">
+            <button className="btn-primary">Book a Repair</button>
+            <button className="btn-secondary">Get Estimate</button>
           </div>
         </div>
+      </div>
+
+      {/* About Section */}
+      <div
+        id="about"
+        className="about-section" /* Changed from 'hero' to 'about-section' */
+      >
+        <div className="hero-content">
+          <h1 className="count-up">15</h1>
+          <p className="years">Years of Expertise</p>
+          <div className="rating">
+            <h2 className="count-up">4.9</h2>
+            <p>Average Rating from 5,000+ Reviews</p>
+          </div>
+          <p className="description">
+            At PlumbFix, we’ve been delivering top-notch plumbing solutions for over a decade and a half. Trusted by thousands, our certified team ensures every job is done with precision and care.
+          </p>
+        </div>
+      </div>
+
+      {/* Placeholder Sections */}
+      <section id="services" className="section">
+        <h2>Our Services</h2>
+        <p>We provide plumbing installation, repair, and maintenance.</p>
       </section>
 
-      {/* Services Section */}
-      <section className="services-section">
-        <h2 className="section-title">Our Services</h2>
-        <div className="services-grid">
-          {services.map((service) => (
-            <div key={service.id} className="service-card">
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-              <Link to="/service" className="cta-button service-cta">
-                Learn More
-              </Link>
-            </div>
-          ))}
-        </div>
+      <section id="contact" className="section">
+        <h2>Contact Us</h2>
+        <p>Email: support@plumbfix.com | Phone: +123 456 7890</p>
       </section>
-
-      {/* Customer Testimonials Section */}
-      <section className="testimonials-section">
-        <h2 className="section-title">What Our Customers Say</h2>
-        <div className="testimonials-grid">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="testimonial-card">
-              <p className="testimonial-text">"{testimonial.text}"</p>
-              <p className="testimonial-author">- {testimonial.name}, {testimonial.location}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Contact Information Section */}
-      <section className="contact-section">
-        <h2 className="section-title">Contact Us</h2>
-        <div className="contact-details">
-          <p><strong>Address:</strong> 123 Kigali, Remera, Kg 11</p>
-          <p><strong>Phone:</strong> 07986338653</p>
-          <p><strong>Email:</strong> KigaliPlumbers123@gmail.com</p>
-          <p><strong>Hours:</strong> 24/7 Support Available</p>
-          <button className="cta-button" onClick={() => window.location.href = '/booking'}>
-            Book Now
-          </button>
-        </div>
-      </section>
-    </div>
+    </>
   );
 };
 

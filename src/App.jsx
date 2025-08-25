@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
+// import About from './components/About';
 import Home from './components/Home';
-import Products from './components/Products';
+
 import Service from './components/Service';
 import BookingPage from './components/BookingPage';
 import Guide from './components/Guide';
@@ -26,10 +26,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+          <Route path="/" element={<Home />}>
+         
             <Route path="/home" element={<Home />} />
-            <Route path="/products" element={<Products />} />
+            {/* <Route path="/about" element={<About />} /> */}
             <Route path="/service" element={<Service />} />
             <Route path="/booking" element={<BookingPage />} />
             <Route path="/guide" element={<Guide />} />
