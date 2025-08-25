@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/home.css";
+import { FaTools, FaUsers, FaStar, FaClock } from "react-icons/fa"; // React Icons
 
-/* Replace these with your actual images */
 import PVC from "../assets/PVC.jpg";
 import Drain from "../assets/Drain.jpg";
 import PipeWrench from "../assets/PipeWrench.jpg";
@@ -9,10 +9,9 @@ import PipeThreader from "../assets/PipeThreader.jpg";
 import PressureGauge from "../assets/PressureGauge.jpg";
 
 const Home = () => {
-  const heroImages = [PVC, Drain, PipeWrench,PipeThreader, PressureGauge];
+  const heroImages = [PVC, Drain, PipeWrench, PipeThreader, PressureGauge];
   const [currentImage, setCurrentImage] = useState(0);
 
-  /* Real cross-fade slideshow (every 5s) */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((i) => (i + 1) % heroImages.length);
@@ -20,7 +19,6 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  /* Auto-scroll from Hero → About after 10s */
   useEffect(() => {
     const timer = setTimeout(() => {
       const about = document.getElementById("about");
@@ -31,7 +29,6 @@ const Home = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">PlumbFix</div>
         <ul className="nav-links">
@@ -42,7 +39,6 @@ const Home = () => {
         </ul>
       </nav>
 
-      {/* Hero */}
       <section id="home" className="hero">
         <div className="hero-slides">
           {heroImages.map((img, i) => (
@@ -64,27 +60,53 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About — Stats like your screenshot */}
-      <section id="about" className="stats-section">
-        <div className="stats-wrap">
-          <div className="stat-item">
-            <h2 className="stat-number">10</h2>
-            <p className="stat-caption">Years keeping homes and businesses cool</p>
-          </div>
-          <div className="stat-item">
-            <h2 className="stat-number">1,500+</h2>
-            <p className="stat-caption">Satisfied customers across the region</p>
-          </div>
-          <div className="stat-item">
-            <h2 className="stat-number">4.9</h2>
-            <p className="stat-caption">Average service rating on Google and Yelp</p>
-          </div>
-          <div className="stat-item">
-            <h2 className="stat-number">30</h2>
-            <p className="stat-caption">Min response time in peak summer season</p>
-          </div>
-        </div>
-      </section>
+     {/* About / Stats + Our Story */}
+<section id="about" className="about-section">
+  {/* Stats Row */}
+  <div className="stats-wrap">
+    <div className="stat-item">
+      <FaTools className="stat-icon" />
+      <h2 className="stat-number">10</h2>
+      <p className="stat-caption">Years keeping homes and businesses cool</p>
+    </div>
+    <div className="stat-item">
+      <FaUsers className="stat-icon" />
+      <h2 className="stat-number">1,500+</h2>
+      <p className="stat-caption">Satisfied customers across the region</p>
+    </div>
+    <div className="stat-item">
+      <FaStar className="stat-icon" />
+      <h2 className="stat-number">4.9</h2>
+      <p className="stat-caption">Average service rating on Google and Yelp</p>
+    </div>
+    <div className="stat-item">
+      <FaClock className="stat-icon" />
+      <h2 className="stat-number">30</h2>
+      <p className="stat-caption">Min response time in peak summer season</p>
+    </div>
+  </div>
+
+  {/* Our Story */}
+  <div className="our-story">
+    <div className="story-text">
+      <h2 className="story-title">Our Story</h2>
+      <p>
+        What started as a small family-owned service has grown into one of the
+        most trusted plumbing companies in the region. From fixing leaky faucets
+        to handling major installations, our mission has always been the same:
+        deliver fast, reliable, and stress-free plumbing solutions.
+      </p>
+      <p>
+        Every call we take is backed by a commitment to honesty, fair pricing,
+        and customer-first service. That’s why thousands of homes and businesses
+        continue to count on us year after year.
+      </p>
+    </div>
+    <div className="story-image">
+      <img src={PipeWrench} alt="Our Story" />
+    </div>
+  </div>
+</section>
 
       {/* Services */}
       <section id="services" className="section">
