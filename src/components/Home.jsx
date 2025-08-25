@@ -8,6 +8,11 @@ import PipeWrench from "../assets/PipeWrench.jpg";
 import PipeThreader from "../assets/PipeThreader.jpg";
 import PressureGauge from "../assets/PressureGauge.jpg";
 
+import WaterPump from "../assets/WaterPump.jpg";
+import Pipe from "../assets/Pipe.jpg";
+import Compression from "../assets/Compression.jpg";
+
+
 const Home = () => {
   const heroImages = [PVC, Drain, PipeWrench, PipeThreader, PressureGauge];
   const [currentImage, setCurrentImage] = useState(0);
@@ -26,6 +31,17 @@ const Home = () => {
     }, 10000);
     return () => clearTimeout(timer);
   }, []);
+
+  const storyImages = [PipeWrench, PipeThreader, PressureGauge];
+const [currentStory, setCurrentStory] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentStory((i) => (i + 1) % storyImages.length);
+  }, 4000); // switch every 4 seconds
+  return () => clearInterval(interval);
+}, [storyImages.length]);
+
 
   return (
     <>
@@ -86,26 +102,39 @@ const Home = () => {
     </div>
   </div>
 
-  {/* Our Story */}
-  <div className="our-story">
-    <div className="story-text">
-      <h2 className="story-title">Our Story</h2>
-      <p>
-        What started as a small family-owned service has grown into one of the
-        most trusted plumbing companies in the region. From fixing leaky faucets
-        to handling major installations, our mission has always been the same:
-        deliver fast, reliable, and stress-free plumbing solutions.
-      </p>
-      <p>
-        Every call we take is backed by a commitment to honesty, fair pricing,
-        and customer-first service. That’s why thousands of homes and businesses
-        continue to count on us year after year.
-      </p>
-    </div>
-    <div className="story-image">
-      <img src={PipeWrench} alt="Our Story" />
+ 
+ {/* Our Story */}
+<div className="our-story">
+  <div className="story-text">
+    <h2 className="story-title">Our Story</h2>
+    <p>
+      What started as a small family-owned service has grown into one of the
+      most trusted plumbing companies in the region. From fixing leaky faucets
+      to handling major installations, our mission has always been the same:
+      deliver fast, reliable, and stress-free plumbing solutions.
+    </p>
+    <p>
+      Every call we take is backed by a commitment to honesty, fair pricing,
+      and customer-first service. That’s why thousands of homes and businesses
+      continue to count on us year after year.
+    </p>
+  </div>
+
+  <div className="story-image">
+    {/* Slideshow */}
+    <div className="story-slides">
+      {[WaterPump, Pipe, Compression].map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          alt={`Story ${i}`}
+          className={`slide ${i === currentStory ? "active" : ""}`}
+        />
+      ))}
     </div>
   </div>
+</div>
+
 </section>
 
       {/* Services */}
