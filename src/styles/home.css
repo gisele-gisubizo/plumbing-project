@@ -12,7 +12,7 @@ body { margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
 
 /* Navbar */
 .navbar {
-  position: fixed;
+ position: fixed;
   inset: 0 0 auto 0;
   height: 72px;
   padding: 0 50px;
@@ -25,7 +25,7 @@ body { margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
   backdrop-filter: blur(4px);
 }
 .logo {
-  font-size: 1.5rem;
+ font-size: 1.5rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@ body { margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
 .logo-icons {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-right: 10px; /* Changed from margin-left to margin-right for left-side icons */
 }
 .logo-icons .fa-tools,
 .logo-icons .fa-wrench,
@@ -86,7 +86,6 @@ body { margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
 .phone-link .fa-phone {
   font-size: 1.2rem;
 }
-
 section { scroll-margin-top: 84px; }
 
 /* HERO */
