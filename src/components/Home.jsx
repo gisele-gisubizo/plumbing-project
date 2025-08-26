@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/home.css";
-import { FaTools, FaUsers, FaStar, FaClock } from "react-icons/fa"; // React Icons
+import { FaTools, FaUsers, FaStar, FaClock, FaPhone, FaWrench, FaTachometerAlt } from "react-icons/fa"; // Added FaWrench, FaTachometerAlt
 
 import PVC from "../assets/PVC.jpg";
 import Drain from "../assets/Drain.jpg";
@@ -48,12 +48,23 @@ const Home = () => {
   return (
     <>
       <nav className="navbar">
-        <div className="logo">PlumbFix</div>
+        <div className="logo">
+          PlumbFix
+          <span className="logo-icons">
+            <FaTools style={{ color: '#0077ff', marginLeft: '10px' }} />
+            <FaWrench style={{ color: '#0077ff', marginLeft: '5px' }} />
+            <FaTachometerAlt style={{ color: '#0077ff', marginLeft: '5px' }} />
+          </span>
+        </div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li>
+            <a href="tel:+1234567890" className="phone-link">
+              <FaPhone style={{ color: '#0077ff', fontSize: '1.2rem' }} />
+            </a>
+          </li>
         </ul>
       </nav>
 
