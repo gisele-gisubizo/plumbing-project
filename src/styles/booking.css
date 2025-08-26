@@ -1,84 +1,136 @@
-.booking-container {
-  min-height: 100vh;
-  background-color: #f9f1e7; /* Light beige background like the therapy form */
-  padding: 20px;
-  margin-left: 256px; /* Matches w-64 (16rem) from sidebar */
+.booking-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.booking-content {
-  background-color: white;
-  padding: 20px;
+.booking-page h1 {
+  font-size: 2.5rem;
+  color: var(--ink, #333);
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.booking-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-page label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 1.1rem;
+  color: var(--ink, #333);
+}
+
+.booking-page input,
+.booking-page textarea,
+.booking-page .react-datepicker__input-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--rule, #e9edf2);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.booking-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.booking-title {
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.booking-subtitle {
-  color: #666;
-}
-
-.booking-instruction {
-  font-size: 14px;
-}
-
-.booking-assurance {
-  font-size: 14px;
-}
-
-.booking-form {
-  padding-top: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.form-input {
+  margin-top: 5px;
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-.form-input.flex-1 {
-  flex: 1;
+.booking-page textarea {
+  height: 150px;
+  resize: vertical;
 }
 
-.book-service-btn {
-  background-color: #f59e0b;
-  color: white;
+.booking-page button {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  background: var(--brand, #0077ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.booking-page button:hover {
+  background: var(--brand-dark, #005bcc);
+}
+
+.booking-page button:disabled {
+  background: var(--muted, #8a8a8a);
+  cursor: not-allowed;
+}
+
+.suggested-services {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggested-services h2 {
+  font-size: 1.8rem;
+  color: var(--brand, #0077ff);
+  margin-bottom: 10px;
+}
+
+.suggested-services ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.suggested-services li {
+  font-size: 1rem;
+  color: var(--ink, #333);
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.suggested-services li:before {
+  content: "•";
+  color: var(--brand, #0077ff);
+  position: absolute;
+  left: 0;
+}
+
+.suggested-services p {
+  font-size: 1.2rem;
+  color: var(--ink, #333);
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.react-datepicker {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid var(--rule, #e9edf2);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__input-container input {
   padding: 10px;
   border: none;
-  border-radius: 4px;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  background: #f9fafc;
 }
 
-.book-service-btn:hover {
-  background-color: #e08e0b;
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: var(--brand, #0077ff) !important;
+  color: #fff !important;
 }
 
-@media (min-width: 768px) {
-  .form-group {
-    margin-bottom: 20px;
-  }
+.react-datepicker__day:hover {
+  background: var(--brand-dark, #005bcc) !important;
+  color: #fff !important;
 }

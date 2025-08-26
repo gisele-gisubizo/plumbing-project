@@ -51,8 +51,8 @@ const Home = () => {
         <div className="logo">
           <span className="logo-icons">
             <FaTools style={{ color: '#0077ff', marginRight: '5px' }} />
-            <FaWrench style={{ color: '#0077ff', marginRight: '5px' }} />
-            <FaTachometerAlt style={{ color: '#0077ff', marginRight: '5px' }} />
+            {/* <FaWrench style={{ color: '#0077ff', marginRight: '5px' }} />
+            <FaTachometerAlt style={{ color: '#0077ff', marginRight: '5px' }} /> */}
           </span>
           PlumbFix
         </div>

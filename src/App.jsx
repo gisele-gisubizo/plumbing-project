@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import About from './components/About';
 import Home from './components/Home';
 
-import Service from './components/Service';
-import BookingPage from './components/BookingPage';
+import Booking from './components/Booking';
 import Guide from './components/Guide';
 import DashBoardLayout from './Dashboard/DashBoardLayout';
 import DashBoardView from './Dashboard/DashBoardView';
@@ -30,8 +29,8 @@ function App() {
          
             <Route path="/home" element={<Home />} />
             {/* <Route path="/about" element={<About />} /> */}
-            <Route path="/service" element={<Service />} />
-            <Route path="/booking" element={<BookingPage />} />
+            
+            <Route path="/booking" element={<Booking />} />
             <Route path="/guide" element={<Guide />} />
           </Route>
 
