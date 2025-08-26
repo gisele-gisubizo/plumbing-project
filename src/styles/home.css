@@ -339,6 +339,85 @@ section { scroll-margin-top: 84px; }
   color: #333;
 }
 
+.footer {
+  background: #333;
+  color: #fff;
+  padding: 40px 10%;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  color: #0077ff;
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 10px 0;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #0077ff;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #0077ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #999;
+  margin: 0;
+}
+
 /* Responsive tweaks */
 @media (min-width: 900px){
   .navbar { padding: 0 64px; }

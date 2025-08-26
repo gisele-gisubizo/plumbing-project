@@ -229,13 +229,42 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="section">
-        <div>
-          <h2>Contact Us</h2>
-          <p>Email: support@plumbfix.com &nbsp;|&nbsp; Phone: +123 456 7890</p>
+      {/* Footer */}
+      <footer id="footer" className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>PlumbFix</h3>
+            <p>Your trusted plumbing experts since 2015.</p>
+            <p>Delivering quality service with a commitment to excellence.</p>
+          </div>
+          <div className="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: support@plumbfix.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Plumbing Lane, Waterford, CA 95386</p>
+          </div>
+          <div className="footer-section">
+            <h3>Follow Us</h3>
+            <p>Stay connected for updates and tips.</p>
+            <div className="social-links">
+              <a href="https://facebook.com/plumbfix" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://twitter.com/plumbfix" target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href="https://instagram.com/plumbfix" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
         </div>
-      </section>
+        <div className="footer-bottom">
+          <p>&copy; 2025 PlumbFix. All rights reserved.</p>
+        </div>
+      </footer>
     </>
   );
 };
