@@ -12,6 +12,9 @@ import WaterPump from "../assets/WaterPump.jpg";
 import Pipe from "../assets/Pipe.jpg";
 import Compression from "../assets/Compression.jpg";
 
+import Peter from "../assets/Peter.jpg";
+import Paul from "../assets/Paul.jpg";
+import Sarah from "../assets/Sarah.jpg";
 
 const Home = () => {
   const heroImages = [PVC, Drain, PipeWrench, PipeThreader, PressureGauge];
@@ -33,15 +36,14 @@ const Home = () => {
   }, []);
 
   const storyImages = [PipeWrench, PipeThreader, PressureGauge];
-const [currentStory, setCurrentStory] = useState(0);
+  const [currentStory, setCurrentStory] = useState(0);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentStory((i) => (i + 1) % storyImages.length);
-  }, 4000); // switch every 4 seconds
-  return () => clearInterval(interval);
-}, [storyImages.length]);
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStory((i) => (i + 1) % storyImages.length);
+    }, 4000); // switch every 4 seconds
+    return () => clearInterval(interval);
+  }, [storyImages.length]);
 
   return (
     <>
@@ -76,72 +78,154 @@ useEffect(() => {
         </div>
       </section>
 
-     {/* About / Stats + Our Story */}
-<section id="about" className="about-section">
-  {/* Stats Row */}
-  <div className="stats-wrap">
-    <div className="stat-item">
-      <FaTools className="stat-icon" />
-      <h2 className="stat-number">10</h2>
-      <p className="stat-caption">Years keeping homes and businesses cool</p>
-    </div>
-    <div className="stat-item">
-      <FaUsers className="stat-icon" />
-      <h2 className="stat-number">1,500+</h2>
-      <p className="stat-caption">Satisfied customers across the region</p>
-    </div>
-    <div className="stat-item">
-      <FaStar className="stat-icon" />
-      <h2 className="stat-number">4.9</h2>
-      <p className="stat-caption">Average service rating on Google and Yelp</p>
-    </div>
-    <div className="stat-item">
-      <FaClock className="stat-icon" />
-      <h2 className="stat-number">30</h2>
-      <p className="stat-caption">Min response time in peak summer season</p>
-    </div>
-  </div>
+      {/* About / Stats + Our Story */}
+      <section id="about" className="about-section">
+        {/* Stats Row */}
+        <div className="stats-wrap">
+          <div className="stat-item">
+            <FaTools className="stat-icon" />
+            <h2 className="stat-number">10</h2>
+            <p className="stat-caption">Years keeping homes and businesses cool</p>
+          </div>
+          <div className="stat-item">
+            <FaUsers className="stat-icon" />
+            <h2 className="stat-number">1,500+</h2>
+            <p className="stat-caption">Satisfied customers across the region</p>
+          </div>
+          <div className="stat-item">
+            <FaStar className="stat-icon" />
+            <h2 className="stat-number">4.9</h2>
+            <p className="stat-caption">Average service rating on Google and Yelp</p>
+          </div>
+          <div className="stat-item">
+            <FaClock className="stat-icon" />
+            <h2 className="stat-number">30</h2>
+            <p className="stat-caption">Min response time in peak summer season</p>
+          </div>
+        </div>
 
- 
- {/* Our Story */}
-<div className="our-story">
-  <div className="story-text">
-    <h2 className="story-title">Our Story</h2>
-    <p>
-      What started as a small family-owned service has grown into one of the
-      most trusted plumbing companies in the region. From fixing leaky faucets
-      to handling major installations, our mission has always been the same:
-      deliver fast, reliable, and stress-free plumbing solutions.
-    </p>
-    <p>
-      Every call we take is backed by a commitment to honesty, fair pricing,
-      and customer-first service. That’s why thousands of homes and businesses
-      continue to count on us year after year.
-    </p>
-  </div>
+        {/* Our Story */}
+        <div className="our-story">
+          <div className="story-text">
+            <h2 className="story-title">Our Story</h2>
+            <p>
+              What started as a small family-owned service has grown into one of the
+              most trusted plumbing companies in the region. From fixing leaky faucets
+              to handling major installations, our mission has always been the same:
+              deliver fast, reliable, and stress-free plumbing solutions.
+            </p>
+            <p>
+              Every call we take is backed by a commitment to honesty, fair pricing,
+              and customer-first service. That’s why thousands of homes and businesses
+              continue to count on us year after year.
+            </p>
+          </div>
 
-  <div className="story-image">
-    {/* Slideshow */}
-    <div className="story-slides">
-      {[WaterPump, Pipe, Compression].map((img, i) => (
-        <img
-          key={i}
-          src={img}
-          alt={`Story ${i}`}
-          className={`slide ${i === currentStory ? "active" : ""}`}
-        />
-      ))}
-    </div>
-  </div>
-</div>
+          <div className="story-image">
+            {/* Slideshow */}
+            <div className="story-slides">
+              {[WaterPump, Pipe, Compression].map((img, i) => (
+                <img
+                  key={i}
+                  src={img}
+                  alt={`Story ${i}`}
+                  className={`slide ${i === currentStory ? "active" : ""}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-</section>
-
-      {/* Services */}
-      <section id="services" className="section">
-        <div>
-          <h2>Our Services</h2>
-          <p>We provide plumbing installation, repair, and maintenance.</p>
+      <section id="services" className="services-section">
+        <div className="services-header">
+          <h2>Our Plumbing Services</h2>
+          <p>Comprehensive solutions for all your plumbing needs.</p>
+        </div>
+        <div className="services-grid">
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Leak Detection & Repair</h3>
+            <p>Expert detection and repair of leaks to prevent water damage.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Pipe Installation & Replacement</h3>
+            <p>Professional installation and replacement of all pipe types.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Drain Cleaning</h3>
+            <p>Efficient clearing of clogged drains for smooth water flow.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Water Heater Services</h3>
+            <p>Installation, repair, and maintenance of water heaters.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Fixture Installation</h3>
+            <p>Expert installation of sinks, toilets, and other fixtures.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Emergency Plumbing</h3>
+            <p>24/7 emergency services for urgent plumbing issues.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Sewer Line Repair</h3>
+            <p>Advanced solutions for sewer line issues and blockages.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" style={{ backgroundColor: '#e6f0fa' }}>
+              <FaTools style={{ color: '#0077ff' }} />
+            </div>
+            <h3>Backflow Prevention</h3>
+            <p>Installation and testing of backflow prevention systems.</p>
+          </div>
+        </div>
+        <div className="customer-reviews">
+          <h2>What Our Customers Say</h2>
+          <p>Customer reviews in the spotlight</p>
+          <div className="reviews-grid">
+            <div className="review-card">
+              <img src={Peter} alt="Peter K." className="review-image" />
+              <div className="review-content">
+                <div className="stars">★★★★★</div>
+                <p><strong>Peter K.</strong><br />"Fantastic work! The team at PlumbFix quickly repaired my roof while providing great customer service. Highly recommended!"</p>
+              </div>
+            </div>
+            <div className="review-card">
+              <img src={Paul} alt="Paul D." className="review-image" />
+              <div className="review-content">
+                <div className="stars">★★★★☆</div>
+                <p><strong>Paul D.</strong><br />"The team at PlumbFix quickly repaired my roof while providing great customer service. Highly recommended!"</p>
+              </div>
+            </div>
+            <div className="review-card">
+              <img src={Sarah} alt="Sarah R." className="review-image" />
+              <div className="review-content">
+                <div className="stars">★★★★★</div>
+                <p><strong>Sarah R.</strong><br />"Fantastic work! The team at PlumbFix quickly repaired my roof while providing great customer service. Highly recommended!"</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
