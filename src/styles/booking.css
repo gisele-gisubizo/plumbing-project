@@ -191,3 +191,27 @@
   background: var(--brand-dark, #005bcc) !important;
   color: #fff !important;
 }
+
+.estimate-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.detailed-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--brand, #0077ff);
+  border: 1px solid var(--brand, #0077ff);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.detailed-button:hover {
+  background: var(--brand, #0077ff);
+  color: #fff;
+  transform: translateY(-2px);
+}

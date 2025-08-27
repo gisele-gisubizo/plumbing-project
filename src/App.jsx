@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Booking from "./components/Booking";
-import Guide from "./components/Guide";
+import DetailedEstimate from "./components/DetailedEstimate";
 import "./App.css";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         {/* Top-level routes */}
         <Route path="/home" element={<Home />} />
         <Route path="/booking" element={<Booking />} />
-        <Route path="/guide" element={<Guide />} />
+        <Route path="/detailed-estimate" element={<DetailedEstimate />} />
         {/* Catch-all route for 404 (optional) */}
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
       </Routes>

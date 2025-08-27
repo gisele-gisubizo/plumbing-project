@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom"; // For navigation
 import "../styles/booking.css";
 
 const Booking = () => {
@@ -16,7 +17,7 @@ const Booking = () => {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Details, 2: Services, 3: Date/Time, 4: Confirmation
 
-  // Simulated services based on description (placeholder)
+  // Simulated services based on description
   const simulateSuggestServices = () => {
     if (!description) return [];
     const keywords = description.toLowerCase();
@@ -36,7 +37,7 @@ const Booking = () => {
     );
   };
 
-  // Simulated estimate based on suggested services
+  // Simulated base estimate
   const simulateGetEstimate = () => {
     const basePrices = {
       "Leak Detection & Repair": 150,
@@ -57,8 +58,9 @@ const Booking = () => {
         alert("Please fill in all fields.");
         return;
       }
-      setSuggestedServices(simulateSuggestServices());
-      if (simulateSuggestServices().length === 0) {
+      const simServices = simulateSuggestServices();
+      setSuggestedServices(simServices);
+      if (simServices.length === 0) {
         alert("No services matched your description. Please provide more details.");
         return;
       }
@@ -78,7 +80,7 @@ const Booking = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (step === 4) {
-      alert(`Appointment booked for ${name} on ${appointmentDate.toDateString()} at ${appointmentTime}. Estimated Cost: $${estimate}`);
+      alert(`Appointment booked for ${name} on ${appointmentDate?.toDateString()} at ${appointmentTime}. Estimated Cost: $${estimate}`);
       // Reset form
       setName("");
       setEmail("");
@@ -214,9 +216,17 @@ const Booking = () => {
                 placeholder="Select a time"
               />
             </label>
-            {estimate !== null && <p className="estimate">Estimated Cost: ${estimate}</p>}
+            {estimate !== null && (
+              <div className="estimate-section">
+                <p className="estimate">Estimated Cost: ${estimate}</p>
+                <Link to="/detailed-estimate" state={{ services: suggestedServices, description }}>
+                  <button className="detailed-button">Get Detailed Cost</button>
+                </Link>
+              </div>
+            )}
             <button
-              type="submit"
+              type="button"
+              onClick={handleNextStep}
               disabled={loading}
               className="next-button"
             >
@@ -237,14 +247,28 @@ const Booking = () => {
             <h2>Booking Confirmed!</h2>
             <p>Thank you, {name}! Your appointment has been booked.</p>
             <p>Details: {appointmentDate?.toDateString()} at {appointmentTime}</p>
-            <p>Estimated Cost: ${estimate || "TBD"}</p>
+            {estimate !== null && (
+              <div className="estimate-section">
+                <p className="estimate">Estimated Cost: ${estimate}</p>
+                <Link to="/detailed-estimate" state={{ services: suggestedServices, description }}>
+                  <button className="detailed-button">Get Detailed Cost</button>
+                </Link>
+              </div>
+            )}
             <p>Services: {suggestedServices.join(", ")}</p>
             <button
+              type="submit"
+              disabled={loading}
+              className="next-button"
+            >
+              {loading ? "Loading..." : "Finish"}
+            </button>
+            <button
               type="button"
-              onClick={() => setStep(1)}
+              onClick={() => setStep(3)}
               className="back-button"
             >
-              Book Another
+              Back
             </button>
           </div>
         )}
