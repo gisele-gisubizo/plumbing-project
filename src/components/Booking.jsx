@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom"; // For navigation
+import { Link } from "react-router-dom";
 import "../styles/booking.css";
 
 const Booking = () => {
@@ -15,9 +15,8 @@ const Booking = () => {
   const [appointmentDate, setAppointmentDate] = useState(null);
   const [appointmentTime, setAppointmentTime] = useState("");
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(1); // 1: Details, 2: Services, 3: Date/Time, 4: Confirmation
+  const [step, setStep] = useState(1);
 
-  // Simulated services based on description
   const simulateSuggestServices = () => {
     if (!description) return [];
     const keywords = description.toLowerCase();
@@ -37,7 +36,6 @@ const Booking = () => {
     );
   };
 
-  // Simulated base estimate
   const simulateGetEstimate = () => {
     const basePrices = {
       "Leak Detection & Repair": 150,
@@ -81,7 +79,6 @@ const Booking = () => {
     e.preventDefault();
     if (step === 4) {
       alert(`Appointment booked for ${name} on ${appointmentDate?.toDateString()} at ${appointmentTime}. Estimated Cost: $${estimate}`);
-      // Reset form
       setName("");
       setEmail("");
       setPhone("");

@@ -1,12 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import "../styles/booking.css"; // Reuse booking.css for consistency
+import { useLocation, Link } from "react-router-dom";
+import "../styles/booking.css";
 
 const DetailedEstimate = () => {
   const { state } = useLocation();
   const { services = [], description = "" } = state || {};
 
-  // Simulated AI to suggest tools and costs
   const simulateDetailedEstimate = () => {
     const toolDatabase = {
       "Leak Detection & Repair": [
@@ -56,8 +55,8 @@ const DetailedEstimate = () => {
       const tools = toolDatabase[service] || [];
       const enhancedTools = tools.filter(tool =>
         tool.keywords.some(keyword => descKeywords.includes(keyword)) ||
-        Math.random() > 0.7 // Randomly add tools for simulation
-      ).map(tool => ({ ...tool, cost: tool.cost * (Math.random() * 0.2 + 0.9) })); // Slight cost variation
+        Math.random() > 0.7
+      ).map(tool => ({ ...tool, cost: tool.cost * (Math.random() * 0.2 + 0.9) }));
       const subtotal = enhancedTools.reduce((sum, tool) => sum + tool.cost, 0);
       return { service, tools: enhancedTools, subtotal };
     });
@@ -98,8 +97,8 @@ const DetailedEstimate = () => {
       ) : (
         <p>No services selected or description provided to generate a detailed estimate.</p>
       )}
-      <Link to="/booking">
-        <button className="back-button">Back to Booking</button>
+      <Link to="/home">
+        <button className="next-button">Back to Home</button>
       </Link>
     </div>
   );

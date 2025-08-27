@@ -89,7 +89,8 @@
 }
 
 .booking-form .next-button,
-.booking-form .back-button {
+.booking-form .back-button,
+.detailed-estimate .back-button {
   padding: 12px 24px;
   font-size: 1.1rem;
   border-radius: 6px;
@@ -113,14 +114,16 @@
   cursor: not-allowed;
 }
 
-.booking-form .back-button {
+.booking-form .back-button,
+.detailed-estimate .back-button {
   background: #fff;
   color: var(--brand, #0077ff);
   border: 1px solid var(--brand, #0077ff);
-  margin-top: 10px;
+  margin-top: 20px; /* Increased for better spacing */
 }
 
-.booking-form .back-button:hover {
+.booking-form .back-button:hover,
+.detailed-estimate .back-button:hover {
   background: var(--brand, #0077ff);
   color: #fff;
   transform: translateY(-2px);
@@ -160,6 +163,30 @@
   margin: 20px 0;
 }
 
+.estimate-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.detailed-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--brand, #0077ff);
+  border: 1px solid var(--brand, #0077ff);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.detailed-button:hover {
+  background: var(--brand, #0077ff);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 .confirmation-step p {
   font-size: 1.1rem;
   color: var(--ink, #333);
@@ -192,26 +219,58 @@
   color: #fff !important;
 }
 
-.estimate-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 20px 0;
+.detailed-estimate {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9fafc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
-.detailed-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background: #fff;
+.detailed-estimate h3 {
+  font-size: 1.8rem;
   color: var(--brand, #0077ff);
-  border: 1px solid var(--brand, #0077ff);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 15px;
 }
 
-.detailed-button:hover {
-  background: var(--brand, #0077ff);
-  color: #fff;
-  transform: translateY(-2px);
+.service-breakdown {
+  margin-bottom: 20px;
+}
+
+.service-breakdown h4 {
+  font-size: 1.4rem;
+  color: var(--ink, #333);
+  margin-bottom: 10px;
+}
+
+.service-breakdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.service-breakdown th,
+.service-breakdown td {
+  padding: 10px;
+  border: 1px solid var(--rule, #e9edf2);
+  text-align: left;
+}
+
+.service-breakdown th {
+  background: #f0f0f0;
+  font-weight: 600;
+  color: var(--ink, #333);
+}
+
+.service-breakdown td {
+  color: var(--muted, #8a8a8a);
+}
+
+.total {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink, #333);
+  text-align: right;
+  margin-top: 10px;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Add this import for navigation
 import "../styles/home.css";
 import { FaTools, FaUsers, FaStar, FaClock, FaPhone, FaWrench, FaTachometerAlt } from "react-icons/fa";
 
@@ -83,8 +84,12 @@ const Home = () => {
           <h1>Fast Plumbing Repair — When You Need It Most.</h1>
           <p>Same-day service. Certified plumbers. 100% satisfaction guarantee.</p>
           <div className="buttons">
-            <button className="btn-primary">Book a Repair</button>
-            <button className="btn-secondary">Get Estimate</button>
+            <Link to="/booking">
+              <button className="btn-primary">Book a Repair</button>
+            </Link>
+            <Link to="/detailed-estimate">
+              <button className="btn-secondary">Get Detailed Cost</button>
+            </Link>
           </div>
         </div>
       </section>
