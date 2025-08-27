@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/booking.css"; // Assume a separate CSS or integrate into home.css
+import "../styles/booking.css";
 
 const Booking = () => {
   const [name, setName] = useState("");
@@ -14,78 +14,71 @@ const Booking = () => {
   const [appointmentDate, setAppointmentDate] = useState(null);
   const [appointmentTime, setAppointmentTime] = useState("");
   const [loading, setLoading] = useState(false);
+  const [step, setStep] = useState(1); // 1: Details, 2: Services, 3: Date/Time, 4: Confirmation
 
-  const handleSuggestServices = async () => {
-    if (!description) {
-      alert("Please describe your problem.");
-      return;
-    }
-    setLoading(true);
-    try {
-      // API call to backend for AI-based service suggestion
-      const response = await fetch("/api/suggest-services", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ description }),
-      });
-      const data = await response.json();
-      setSuggestedServices(data.suggestedServices || []);
-      if (data.suggestedServices.length === 0) {
-        alert("No matching services found. Please provide more details.");
+  // Simulated services based on description (placeholder)
+  const simulateSuggestServices = () => {
+    if (!description) return [];
+    const keywords = description.toLowerCase();
+    const services = [
+      "Leak Detection & Repair",
+      "Pipe Installation & Replacement",
+      "Drain Cleaning",
+      "Water Heater Services",
+      "Fixture Installation",
+      "Emergency Plumbing",
+      "Sewer Line Repair",
+      "Backflow Prevention",
+    ];
+    return services.filter(service =>
+      keywords.includes(service.toLowerCase().replace(/ & /g, " ")) ||
+      keywords.includes(service.toLowerCase().split(" ")[0])
+    );
+  };
+
+  // Simulated estimate based on suggested services
+  const simulateGetEstimate = () => {
+    const basePrices = {
+      "Leak Detection & Repair": 150,
+      "Pipe Installation & Replacement": 300,
+      "Drain Cleaning": 100,
+      "Water Heater Services": 250,
+      "Fixture Installation": 200,
+      "Emergency Plumbing": 400,
+      "Sewer Line Repair": 350,
+      "Backflow Prevention": 180,
+    };
+    return suggestedServices.reduce((sum, service) => sum + (basePrices[service] || 0), 0);
+  };
+
+  const handleNextStep = () => {
+    if (step === 1) {
+      if (!name || !email || !phone || !address || !description) {
+        alert("Please fill in all fields.");
+        return;
       }
-    } catch (error) {
-      alert("Error fetching suggestions. Please try again.");
+      setSuggestedServices(simulateSuggestServices());
+      if (simulateSuggestServices().length === 0) {
+        alert("No services matched your description. Please provide more details.");
+        return;
+      }
+      setStep(2);
+    } else if (step === 2) {
+      setEstimate(simulateGetEstimate());
+      setStep(3);
+    } else if (step === 3) {
+      if (!appointmentDate || !appointmentTime) {
+        alert("Please select a date and time.");
+        return;
+      }
+      setStep(4);
     }
-    setLoading(false);
   };
 
-  const handleGetEstimate = async () => {
-    if (suggestedServices.length === 0) {
-      alert("Please get service suggestions first.");
-      return;
-    }
-    setLoading(true);
-    try {
-      // API call to backend for estimate based on suggested services
-      const response = await fetch("/api/get-estimate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ services: suggestedServices }),
-      });
-      const data = await response.json();
-      setEstimate(data.estimate || null);
-    } catch (error) {
-      alert("Error fetching estimate. Please try again.");
-    }
-    setLoading(false);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!appointmentDate || !appointmentTime || suggestedServices.length === 0) {
-      alert("Please complete all fields, including service suggestions and date/time.");
-      return;
-    }
-    setLoading(true);
-    try {
-      // API call to backend for booking appointment
-      const response = await fetch("/api/book-appointment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          address,
-          description,
-          services: suggestedServices,
-          estimate,
-          date: appointmentDate.toISOString(),
-          time: appointmentTime,
-        }),
-      });
-      const data = await response.json();
-      alert(data.message || "Appointment booked successfully!");
+    if (step === 4) {
+      alert(`Appointment booked for ${name} on ${appointmentDate.toDateString()} at ${appointmentTime}. Estimated Cost: $${estimate}`);
       // Reset form
       setName("");
       setEmail("");
@@ -96,62 +89,165 @@ const Booking = () => {
       setEstimate(null);
       setAppointmentDate(null);
       setAppointmentTime("");
-    } catch (error) {
-      alert("Error booking appointment. Please try again.");
+      setStep(1);
     }
-    setLoading(false);
   };
 
   return (
     <div className="booking-page">
-      <h1>Book an Appointment</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Phone:
-          <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-        </label>
-        <label>
-          Address:
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
-        </label>
-        <label>
-          Describe Your Problem (in any language):
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-        </label>
-        <button type="button" onClick={handleSuggestServices} disabled={loading}>
-          {loading ? "Loading..." : "Suggest Services"}
-        </button>
-        {suggestedServices.length > 0 && (
-          <div className="suggested-services">
-            <h2>Suggested Services:</h2>
-            <ul>
-              {suggestedServices.map((service, i) => <li key={i}>{service}</li>)}
-            </ul>
-            <button type="button" onClick={handleGetEstimate} disabled={loading}>
-              {loading ? "Loading..." : "Get Estimate"}
+      <h1>Book Your Plumbing Service</h1>
+      <div className="progress-bar">
+        <div className={`step ${step >= 1 ? "active" : ""}`}>1. Details</div>
+        <div className={`step ${step >= 2 ? "active" : ""}`}>2. Services</div>
+        <div className={`step ${step >= 3 ? "active" : ""}`}>3. Date & Time</div>
+        <div className={`step ${step >= 4 ? "active" : ""}`}>4. Confirmation</div>
+      </div>
+
+      <form onSubmit={handleSubmit} className="booking-form">
+        {step === 1 && (
+          <>
+            <label>
+              Full Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Enter your full name"
+              />
+            </label>
+            <label>
+              Email:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email"
+              />
+            </label>
+            <label>
+              Phone:
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                placeholder="Enter your phone number"
+              />
+            </label>
+            <label>
+              Address:
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+                placeholder="Enter your address"
+              />
+            </label>
+            <label>
+              Describe Your Issue:
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                placeholder="Describe your plumbing problem (any language)"
+              />
+            </label>
+            <button
+              type="button"
+              onClick={handleNextStep}
+              disabled={loading}
+              className="next-button"
+            >
+              {loading ? "Loading..." : "Next Step"}
             </button>
-            {estimate !== null && <p>Estimated Cost: ${estimate}</p>}
+          </>
+        )}
+
+        {step === 2 && suggestedServices.length > 0 && (
+          <div className="services-step">
+            <h2>Your Suggested Services</h2>
+            <ul>
+              {suggestedServices.map((service, i) => (
+                <li key={i}>{service}</li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={handleNextStep}
+              disabled={loading}
+              className="next-button"
+            >
+              {loading ? "Loading..." : "Next Step"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setStep(1)}
+              className="back-button"
+            >
+              Back
+            </button>
           </div>
         )}
-        <label>
-          Appointment Date:
-          <DatePicker selected={appointmentDate} onChange={(date) => setAppointmentDate(date)} required />
-        </label>
-        <label>
-          Appointment Time:
-          <input type="time" value={appointmentTime} onChange={(e) => setAppointmentTime(e.target.value)} required />
-        </label>
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Book Appointment"}
-        </button>
+
+        {step === 3 && (
+          <>
+            <label>
+              Appointment Date:
+              <DatePicker
+                selected={appointmentDate}
+                onChange={(date) => setAppointmentDate(date)}
+                required
+                minDate={new Date()}
+                placeholderText="Select a date"
+              />
+            </label>
+            <label>
+              Appointment Time:
+              <input
+                type="time"
+                value={appointmentTime}
+                onChange={(e) => setAppointmentTime(e.target.value)}
+                required
+                placeholder="Select a time"
+              />
+            </label>
+            {estimate !== null && <p className="estimate">Estimated Cost: ${estimate}</p>}
+            <button
+              type="submit"
+              disabled={loading}
+              className="next-button"
+            >
+              {loading ? "Loading..." : "Confirm Booking"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setStep(2)}
+              className="back-button"
+            >
+              Back
+            </button>
+          </>
+        )}
+
+        {step === 4 && (
+          <div className="confirmation-step">
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you, {name}! Your appointment has been booked.</p>
+            <p>Details: {appointmentDate?.toDateString()} at {appointmentTime}</p>
+            <p>Estimated Cost: ${estimate || "TBD"}</p>
+            <p>Services: {suggestedServices.join(", ")}</p>
+            <button
+              type="button"
+              onClick={() => setStep(1)}
+              className="back-button"
+            >
+              Book Another
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

@@ -1,127 +1,184 @@
 .booking-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .booking-page h1 {
   font-size: 2.5rem;
   color: var(--ink, #333);
-  margin-bottom: 30px;
-  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
-.booking-page form {
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--rule, #e9edf2);
+  padding-bottom: 10px;
+}
+
+.progress-bar .step {
+  flex: 1;
+  text-align: center;
+  color: var(--muted, #8a8a8a);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.progress-bar .step.active {
+  color: var(--brand, #0077ff);
+  font-weight: 600;
+}
+
+.progress-bar .step.active:before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--brand, #0077ff);
+  border-radius: 50%;
+}
+
+.booking-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.booking-page label {
+.booking-form label {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  font-size: 1.1rem;
+  gap: 5px;
+  font-size: 1rem;
   color: var(--ink, #333);
 }
 
-.booking-page input,
-.booking-page textarea,
-.booking-page .react-datepicker__input-container input {
-  padding: 10px;
+.booking-form input,
+.booking-form textarea,
+.booking-form .react-datepicker__input-container input {
+  padding: 12px;
   font-size: 1rem;
   border: 1px solid var(--rule, #e9edf2);
-  border-radius: 8px;
-  margin-top: 5px;
+  border-radius: 6px;
   width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-.booking-page textarea {
-  height: 150px;
+.booking-form input:focus,
+.booking-form textarea:focus,
+.booking-form .react-datepicker__input-container input:focus {
+  border-color: var(--brand, #0077ff);
+  outline: none;
+}
+
+.booking-form textarea {
+  height: 120px;
   resize: vertical;
 }
 
-.booking-page button {
-  padding: 12px 20px;
+.booking-form .next-button,
+.booking-form .back-button {
+  padding: 12px 24px;
   font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.booking-form .next-button {
   background: var(--brand, #0077ff);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.booking-page button:hover {
+.booking-form .next-button:hover {
   background: var(--brand-dark, #005bcc);
+  transform: translateY(-2px);
 }
 
-.booking-page button:disabled {
+.booking-form .next-button:disabled {
   background: var(--muted, #8a8a8a);
   cursor: not-allowed;
 }
 
-.suggested-services {
-  margin-top: 20px;
-  padding: 20px;
-  background: #f9fafc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.suggested-services h2 {
-  font-size: 1.8rem;
+.booking-form .back-button {
+  background: #fff;
   color: var(--brand, #0077ff);
-  margin-bottom: 10px;
-}
-
-.suggested-services ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.suggested-services li {
-  font-size: 1rem;
-  color: var(--ink, #333);
-  margin-bottom: 10px;
-  padding-left: 20px;
-  position: relative;
-}
-
-.suggested-services li:before {
-  content: "•";
-  color: var(--brand, #0077ff);
-  position: absolute;
-  left: 0;
-}
-
-.suggested-services p {
-  font-size: 1.2rem;
-  color: var(--ink, #333);
-  font-weight: 600;
+  border: 1px solid var(--brand, #0077ff);
   margin-top: 10px;
 }
 
+.booking-form .back-button:hover {
+  background: var(--brand, #0077ff);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.services-step,
+.confirmation-step {
+  text-align: center;
+}
+
+.services-step h2,
+.confirmation-step h2 {
+  font-size: 1.8rem;
+  color: var(--ink, #333);
+  margin-bottom: 20px;
+}
+
+.services-step ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 20px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.services-step li {
+  font-size: 1.1rem;
+  color: var(--ink, #333);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule, #e9edf2);
+}
+
+.estimate {
+  font-size: 1.2rem;
+  color: var(--ink, #333);
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.confirmation-step p {
+  font-size: 1.1rem;
+  color: var(--ink, #333);
+  margin: 10px 0;
+}
+
 .react-datepicker {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: inherit;
   border: 1px solid var(--rule, #e9edf2);
-  border-radius: 8px;
-  background: #fff;
+  border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .react-datepicker__input-container input {
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #f9fafc;
+  width: 100%;
 }
 
 .react-datepicker__day--selected,
