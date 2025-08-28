@@ -1,0 +1,94 @@
+.dashboard {
+  padding: 2rem;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Titles */
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Stats Cards */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Table Styles */
+.tableContainer {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+.tableContainer h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.table tbody tr:hover {
+  background-color: #f9f9f9;
+}

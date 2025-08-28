@@ -1,0 +1,129 @@
+.bookingsContainer {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  min-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.searchBar {
+  padding: 0.5rem 1rem;
+  width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.searchBar:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Table Styles */
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.bookingsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bookingsTable th,
+.bookingsTable td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+}
+
+.bookingsTable th {
+  background-color: #f1f3f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.bookingsTable tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status Badges */
+.status {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.pending {
+  background-color: #f39c12;
+}
+
+.confirmed {
+  background-color: #3498db;
+}
+
+.completed {
+  background-color: #2ecc71;
+}
+
+.cancelled {
+  background-color: #e74c3c;
+}
+
+/* No Data */
+.noData {
+  text-align: center;
+  color: #777;
+  padding: 1rem 0;
+  font-style: italic;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
