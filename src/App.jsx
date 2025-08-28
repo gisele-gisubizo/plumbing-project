@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Booking from "./components/Booking";
-import Guide from "./components/Guide";
-import DetailedEstimate from "./components/DetailedEstimate"; // Add this import
-import "./App.css";
+import DetailedEstimate from "./components/DetailedEstimate";
+import Login from "./components/Dashboard/Login"; // New login component
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/booking" element={<Booking />} />
-        <Route path="/guide" element={<Guide />} />
-        <Route path="/detailed-estimate" element={<DetailedEstimate />} /> {/* Add this route */}
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+        <Route path="/detailed-estimate" element={<DetailedEstimate />} />
+        <Route path="/dashboard" element={<DashBoardLayout />}>
+          <Route index element={<DashBoardView />} />
+          {/* Add more dashboard routes here later (e.g., /appointments) */}
+        </Route>
+        <Route path="/login" element={<Login />} /> {/* New login route */}
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
