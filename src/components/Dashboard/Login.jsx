@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../../styles/login.css"; // Import the new CSS file
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,16 +8,40 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
+ 
+ useEffect(() => {
+  // Only redirect if already logged in
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (isLoggedIn === "true") {
+    navigate("/admin/dashboard");
+  }
+}, [navigate]);
+
+// Add this for debugging/testing:
+useEffect(() => {
+  localStorage.removeItem("isLoggedIn"); // Clears previous login
+}, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Placeholder for authentication logic
-    console.log("Login attempt:", formData);
-    // Redirect to dashboard after successful login (implement later)
-    // Example: window.location.href = "/dashboard";
+
+    // Example authentication (replace with real API)
+    if (formData.username === "admin" && formData.password === "password") {
+      // Save login status to localStorage
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("username", formData.username);
+
+      // Redirect to dashboard
+      navigate("/admin/dashboard");
+    } else {
+      alert("Invalid credentials");
+    }
   };
 
   return (

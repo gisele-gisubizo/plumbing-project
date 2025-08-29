@@ -8,8 +8,6 @@ import {
   FaTools,
   FaChartLine,
   FaBoxes,
-  FaStar,
-  FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
 import "../../styles/dashboard.css";
@@ -17,36 +15,32 @@ import "../../styles/dashboard.css";
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2 className="logo">PlumbFix</h2>
-      <nav className="nav-links">
-        <NavLink to="/admin/dashboard" className="nav-item">
-          <FaTachometerAlt /> Dashboard
-        </NavLink>
-        <NavLink to="/admin/bookings" className="nav-item">
-          <FaBook /> Bookings
-        </NavLink>
-        <NavLink to="/admin/plumbers" className="nav-item">
-          <FaUserTie /> Plumbers
-        </NavLink>
-        <NavLink to="/admin/customers" className="nav-item">
-          <FaUsers /> Customers
-        </NavLink>
-        <NavLink to="/admin/services" className="nav-item">
-          <FaTools /> Services
-        </NavLink>
-        <NavLink to="/admin/reports" className="nav-item">
-          <FaChartLine /> Reports
-        </NavLink>
-        <NavLink to="/admin/inventory" className="nav-item">
-          <FaBoxes /> Inventory
-        </NavLink>
-        <NavLink to="/admin/settings" className="nav-item">
-          <FaStar />Settings
-        </NavLink>
-        <NavLink to="/admin/settings" className="nav-item">
-          <FaCog /> Settings
-        </NavLink>
-      </nav>
+      <div>
+        <h2 className="logo">PlumbFix</h2>
+        <nav className="nav-links-dashboard">
+          <NavLink to="/admin/dashboard" className="nav-item-dashboard">
+            <FaTachometerAlt /> Dashboard
+          </NavLink>
+          <NavLink to="/admin/bookings" className="nav-item-dashboard">
+            <FaBook /> Bookings
+          </NavLink>
+          <NavLink to="/admin/plumbers" className="nav-item-dashboard">
+            <FaUserTie /> Plumbers
+          </NavLink>
+          <NavLink to="/admin/customers" className="nav-item-dashboard">
+            <FaUsers /> Customers
+          </NavLink>
+          <NavLink to="/admin/services" className="nav-item-dashboard">
+            <FaTools /> Services
+          </NavLink>
+          <NavLink to="/admin/reports" className="nav-item-dashboard">
+            <FaChartLine /> Reports
+          </NavLink>
+          <NavLink to="/admin/inventory" className="nav-item-dashboard">
+            <FaBoxes /> Inventory
+          </NavLink>
+        </nav>
+      </div>
       <button className="logout-btn">
         <FaSignOutAlt /> Logout
       </button>
