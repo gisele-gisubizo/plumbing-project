@@ -1,4 +1,4 @@
-.bookingsContainer {
+.customersContainer {
   padding: 20px;
   background: #f8f9fb;
   min-height: 100vh;
@@ -11,7 +11,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .header h1 {
@@ -40,7 +39,6 @@
   font-size: 14px;
   background-color: white;
   outline: none;
-  transition: 0.2s ease-in-out;
   width: 240px;
 }
 
@@ -49,35 +47,35 @@
   box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
 }
 
-/* Table */
+/* Table styling */
 .tableWrapper {
   overflow-x: auto;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   padding: 10px;
 }
 
-.bookingsTable {
+.customersTable {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
 
-.bookingsTable th,
-.bookingsTable td {
+.customersTable th,
+.customersTable td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
 
-.bookingsTable th {
+.customersTable th {
   background-color: #f1f3f5;
   color: #34495e;
   font-weight: 600;
 }
 
-.bookingsTable tbody tr:hover {
+.customersTable tbody tr:hover {
   background-color: #f8faff;
   transition: 0.3s;
 }
@@ -89,30 +87,47 @@
   font-style: italic;
 }
 
-/* Status badges */
-.status {
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 12px;
-  color: white;
+/* Action buttons */
+.actionBtns {
+  display: flex;
+  gap: 6px;
 }
 
-.pending {
-  background-color: #f39c12;
-}
-
-.confirmed {
+.viewBtn {
+  padding: 6px 12px;
   background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
 }
+.viewBtn:hover { background-color: #2980b9; }
 
-.completed {
-  background-color: #2ecc71;
+.editBtn {
+  padding: 6px 12px;
+  background-color: #f39c12; /* Busy color */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
 }
+.editBtn:hover { background-color: #d35400; }
 
-.cancelled {
+.deleteBtn {
+  padding: 6px 12px;
   background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
 }
+.deleteBtn:hover { background-color: #c0392b; }
 
 /* Pagination */
 .pagination {
@@ -143,4 +158,8 @@
   font-size: 14px;
   font-weight: 500;
   color: #333;
+}
+.customersTable th:nth-child(3),
+.customersTable td:nth-child(3) {
+  min-width: 160px; /* allow phone numbers to fit */
 }

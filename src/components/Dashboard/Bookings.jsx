@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FiSearch } from "react-icons/fi";
 import styles from "../../styles/booking.module.css";
 
 const Bookings = () => {
@@ -32,10 +32,11 @@ const Bookings = () => {
   const displayedBookings = filteredBookings.slice(startIndex, startIndex + bookingsPerPage);
 
   return (
-    <DashboardLayout>
-      <div className={styles.bookingsContainer}>
-        <div className={styles.header}>
-          <h1>Bookings</h1>
+    <div className={styles.bookingsContainer}>
+      <div className={styles.header}>
+        <h1>Bookings</h1>
+        <div className={styles.searchWrapper}>
+          <FiSearch className={styles.searchIcon} />
           <input
             type="text"
             placeholder="Search bookings..."
@@ -47,64 +48,64 @@ const Bookings = () => {
             }}
           />
         </div>
+      </div>
 
-        <div className={styles.tableWrapper}>
-          <table className={styles.bookingsTable}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Customer</th>
-                <th>Service</th>
-                <th>Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayedBookings.length > 0 ? (
-                displayedBookings.map((booking) => (
-                  <tr key={booking.id}>
-                    <td>{booking.id}</td>
-                    <td>{booking.customer}</td>
-                    <td>{booking.service}</td>
-                    <td>{booking.date}</td>
-                    <td>
-                      <span className={`${styles.status} ${styles[booking.status.toLowerCase()]}`}>
-                        {booking.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="5" className={styles.noData}>
-                    No bookings found
+      <div className={styles.tableWrapper}>
+        <table className={styles.bookingsTable}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {displayedBookings.length > 0 ? (
+              displayedBookings.map((booking) => (
+                <tr key={booking.id}>
+                  <td>{booking.id}</td>
+                  <td>{booking.customer}</td>
+                  <td>{booking.service}</td>
+                  <td>{booking.date}</td>
+                  <td>
+                    <span className={`${styles.status} ${styles[booking.status.toLowerCase()]}`}>
+                      {booking.status}
+                    </span>
                   </td>
                 </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Pagination */}
-        <div className={styles.pagination}>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >
-            Prev
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >
-            Next
-          </button>
-        </div>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className={styles.noData}>
+                  No bookings found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
-    </DashboardLayout>
+
+      {/* Pagination */}
+      <div className={styles.pagination}>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Prev
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };
 
