@@ -40,8 +40,8 @@ const Sidebar = () => {
         <NavLink to="/admin/inventory" className="nav-item">
           <FaBoxes /> Inventory
         </NavLink>
-        <NavLink to="/admin/reviews" className="nav-item">
-          <FaStar /> Reviews & Ratings
+        <NavLink to="/admin/settings" className="nav-item">
+          <FaStar />Settings
         </NavLink>
         <NavLink to="/admin/settings" className="nav-item">
           <FaCog /> Settings
