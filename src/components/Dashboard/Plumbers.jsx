@@ -8,7 +8,7 @@ const Plumbers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const plumbersPerPage = 6;
 
-  // Dummy data (replace with API later)
+  
   const plumbersData = [
     { id: 1, name: "John Doe", phone: "+250 788 123 456", email: "john@example.com", rating: 4.8, availability: "Available" },
     { id: 2, name: "Jane Smith", phone: "+250 788 234 567", email: "jane@example.com", rating: 4.6, availability: "Busy" },
@@ -20,7 +20,7 @@ const Plumbers = () => {
     { id: 8, name: "Sophia Garcia", phone: "+250 788 890 123", email: "sophia@example.com", rating: 4.3, availability: "Unavailable" },
   ];
 
-  // Filtered plumbers
+  
   const filteredPlumbers = plumbersData.filter((plumber) =>
     plumber.name.toLowerCase().includes(search.toLowerCase()) ||
     plumber.email.toLowerCase().includes(search.toLowerCase()) ||
